@@ -20,7 +20,7 @@ const trustSignals = [
 ];
 
 const stats = [
-  { value: "15+", label: "Years guiding growth" },
+  { value: "24+", label: "Years guiding growth" },
   { value: "3X", label: "Sharper leadership outcomes" },
   { value: "360°", label: "Personal + team transformation" },
 ];

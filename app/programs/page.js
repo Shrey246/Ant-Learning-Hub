@@ -86,7 +86,7 @@ const programGroups = [
 
 const highlights = [
   { value: "3", label: "Specialized Tracks" },
-  { value: "15+", label: "Years of Expertise" },
+  { value: "24+", label: "Years of Expertise" },
   { value: "100%", label: "Custom Frameworks" },
 ];
 

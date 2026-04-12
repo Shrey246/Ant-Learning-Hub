@@ -34,7 +34,6 @@ export default function AboutPreview() {
             />
           </div>
 
-          {/* FIXED: Positioning safe for mobile (right-0 instead of negative) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -43,8 +42,8 @@ export default function AboutPreview() {
             className="absolute -bottom-4 right-0 md:bottom-6 md:-right-8 z-20 min-w-[140px] md:min-w-[180px] p-4 md:p-6 rounded-2xl md:rounded-3xl backdrop-blur-2xl border border-white/10 bg-[#030812]/80 md:bg-white/[0.05] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-<p className="text-4xl font-bold text-teal-300 drop-shadow-md">24+</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/80 font-medium">Years Experience</p>
+            <p className="text-4xl font-bold text-teal-300 drop-shadow-md">24+</p>
+            <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/80 font-medium">Years Experience</p>
           </motion.div>
         </motion.div>
 
@@ -67,15 +66,25 @@ export default function AboutPreview() {
 
           <div className="mt-6 md:mt-8 space-y-4 md:space-y-6">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              Praveen John Purushotham is a leadership coach focused on helping
-              individuals and teams move from uncertainty to clarity — and from
-              intention to action.
+              Praveen John Purushotham is a certified coach who believes that meaningful growth begins
+              with awareness and is sustained through conscious action.
             </p>
 
             <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              With over 24 years of experience, his work blends emotional
-              intelligence, behavioural insight, and practical frameworks to
-              create meaningful transformation.
+              A seasoned professional with 24 years of industry experience, including 16 years dedicated to
+              Leadership and Behavioural Training excellence.
+            </p>
+
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
+              With a background in leadership, behavioural training, and organisational development,
+              Praveen helps individuals navigate challenges, manage emotions, and build confidence with
+              clarity. His coaching style is supportive, non-judgmental, and deeply practical — helping clients
+              move from confusion to direction, and from intention to execution.
+            </p>
+
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
+              Whether working with professionals, leaders, or students, Praveen’s focus remains the same:
+              enabling people to grow into their best selves, personally and professionally.
             </p>
           </div>
 

@@ -73,7 +73,7 @@ export default function AboutPage() {
             </p>
 
             <p className="mt-6 text-base text-gray-400 leading-relaxed font-light border-l-2 border-teal-500/30 pl-6 italic">
-              &quot;With 15+ years of experience, his approach blends emotional
+              &quot;With 24+ years of experience, his approach blends emotional
               intelligence, behavioral insight, and practical frameworks to
               create real, lasting transformation.&quot;
             </p>

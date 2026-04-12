@@ -73,7 +73,7 @@ export default function AboutPreview() {
             </p>
 
             <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              With over 15 years of experience, his work blends emotional
+              With over 24 years of experience, his work blends emotional
               intelligence, behavioural insight, and practical frameworks to
               create meaningful transformation.
             </p>

@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* =========================
+   ROOT THEME
+========================= */
+
+:root {
+  --background: #07111f;
+  --foreground: #e6edf3;
+
+  --primary: #32d6c5;
+  --secondary: #f4b860;
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   PREMIUM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(50, 214, 197, 0.5),
+    rgba(244, 184, 96, 0.5)
+  );
+  border-radius: 10px;
+}
+
+/* =========================
+   GLASS UI SYSTEM
+========================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 12px;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: #32d6c5;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   GLOW EFFECTS
+========================= */
+
+.glow-teal {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(50, 214, 197, 0.25);
+  filter: blur(120px);
+  border-radius: 50%;
+}
+
+.glow-orange {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(244, 184, 96, 0.25);
+  filter: blur(120px);
+  border-radius: 50%;
+}
+
+/* =========================
+   HERO GRID + NOISE
+========================= */
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+}
+
+.hero-noise {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(244, 184, 96, 0.1), transparent 30%),
+    radial-gradient(circle at 30% 80%, rgba(50, 214, 197, 0.08), transparent 30%);
+}
+
+/* =========================
+   MICRO INTERACTIONS
+========================= */
+
+/* Smooth hover */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Button interaction */
+.btn-premium {
+  transition: all 0.3s ease;
+}
+
+.btn-premium:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 40px rgba(50, 214, 197, 0.3);
+}
+
+/* =========================
+   TEXT STYLING
+========================= */
+
+.heading-premium {
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.subtext {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* =========================
+   SECTION SPACING
+========================= */
+
+.section {
+  padding: 80px 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 120px 0;
+  }
+}

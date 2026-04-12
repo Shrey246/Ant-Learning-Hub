@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+
+  <!-- Background -->
+  <circle cx="19" cy="19" r="19" fill="#E1F5EE"/>
+
+  <!-- ANT (shifted up + slightly smaller via grouping) -->
+  <g transform="translate(0,-2)">
+    <ellipse cx="19" cy="22" rx="6.2" ry="4.4" fill="#1D9E75" opacity="0.2"/>
+    <ellipse cx="19" cy="20" rx="4.4" ry="3.1" fill="#1D9E75"/>
+    
+    <ellipse cx="14.8" cy="17.5" rx="2.8" ry="2" fill="#1D9E75" opacity="0.75" transform="rotate(-20 14.8 17.5)"/>
+    <ellipse cx="23.2" cy="17.5" rx="2.8" ry="2" fill="#1D9E75" opacity="0.75" transform="rotate(20 23.2 17.5)"/>
+    
+    <line x1="19" y1="16.5" x2="16.5" y2="12.5" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="19" y1="16.5" x2="21.5" y2="12.5" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/>
+    
+    <circle cx="16" cy="12" r="1.1" fill="#1D9E75"/>
+    <circle cx="22" cy="12" r="1.1" fill="#1D9E75"/>
+
+    <!-- Legs -->
+    <line x1="12.5" y1="23" x2="10" y2="25.5" stroke="#1D9E75" stroke-width="1.1" stroke-linecap="round"/>
+    <line x1="13.5" y1="24" x2="11.5" y2="27" stroke="#1D9E75" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+    <line x1="25.5" y1="23" x2="28" y2="25.5" stroke="#1D9E75" stroke-width="1.1" stroke-linecap="round"/>
+    <line x1="24.5" y1="24" x2="26.5" y2="27" stroke="#1D9E75" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- BOOKS (moved up + tighter stack) -->
+  
+  <!-- Small -->
+  <rect x="15.8" y="27.5" width="6.5" height="2.2" rx="0.6" fill="#1D9E75" opacity="0.85"/>
+  
+  <!-- Medium -->
+  <rect x="14.3" y="30" width="9.5" height="2.6" rx="0.6" fill="#1D9E75" opacity="0.65"/>
+  
+  <!-- Large -->
+  <rect x="12.8" y="33" width="12.5" height="2.8" rx="0.6" fill="#1D9E75" opacity="0.45"/>
+
+</svg>

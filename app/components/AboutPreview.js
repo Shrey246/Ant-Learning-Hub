@@ -43,7 +43,7 @@ export default function AboutPreview() {
             className="absolute -bottom-4 right-0 md:bottom-6 md:-right-8 z-20 min-w-[140px] md:min-w-[180px] p-4 md:p-6 rounded-2xl md:rounded-3xl backdrop-blur-2xl border border-white/10 bg-[#030812]/80 md:bg-white/[0.05] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-<p className="text-4xl font-bold text-teal-300 drop-shadow-md">15+</p>
+<p className="text-4xl font-bold text-teal-300 drop-shadow-md">24+</p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/80 font-medium">Years Experience</p>
           </motion.div>
         </motion.div>

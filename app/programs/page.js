@@ -18,6 +18,9 @@ import {
   Waves 
 } from "lucide-react";
 
+import { db } from "../lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 const programGroups = [
   {
     title: "For Individuals",
@@ -99,6 +102,19 @@ const principles = [
 export default function Programs() {
   const [active, setActive] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    profession: "",
+  });
+  const [toast, setToast] = useState({
+  show: false,
+  message: "",
+  type: "success" // success | error
+   });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(!window.matchMedia("(hover: hover)").matches);
@@ -106,6 +122,61 @@ export default function Programs() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const openModal = (title) => {
+  setSelectedProgram(title);
+  setShowModal(true);
+    };
+
+    const closeModal = () => {
+      setShowModal(false);
+    };
+
+    const handleChange = (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+        await addDoc(collection(db, "leads"), {
+          type: "program",
+          program: selectedProgram,
+          ...form,
+          createdAt: serverTimestamp()
+        });
+
+        setToast({
+          show: true,
+          message: "Enquiry submitted successfully",
+          type: "success"
+        });
+
+        setTimeout(() => {
+          setToast({ show: false, message: "", type: "success" });
+        }, 3000);
+
+        setShowModal(false);
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          profession: "",
+        });
+
+      } catch (err) {
+        console.error(err);
+        setToast({
+          show: true,
+          message: "Error submitting form",
+          type: "error"
+        });
+        setTimeout(() => {
+          setToast({ show: false, message: "", type: "error" });
+        }, 3000);
+      }
+    };
 
   return (
     <>
@@ -215,15 +286,15 @@ export default function Programs() {
                   </div>
 
                   <div className="mt-14 relative z-10">
-                    <Link
-                      href="/Contact"
-                      className={`group/btn relative inline-flex items-center justify-center w-full rounded-full 
-                                 bg-white text-black py-5 text-sm font-black transition-all 
-                                 hover:bg-teal-400 hover:text-black shadow-2xl`}
-                    >
-                      Enquire Now
-                      <ArrowRight size={20} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
-                    </Link>
+            <button
+              onClick={() => openModal(program.title)}
+              className={`group/btn relative inline-flex items-center justify-center w-full rounded-full 
+                        bg-white text-black py-5 text-sm font-black transition-all 
+                        hover:bg-teal-400 hover:text-black shadow-2xl`}
+            >
+              Enquire Now
+              <ArrowRight size={20} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
+            </button>
                   </div>
                 </motion.div>
               );
@@ -250,7 +321,157 @@ export default function Programs() {
           </div>
         </section>
 
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+            {/* BACKDROP */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={closeModal} />
+
+            {/* MODAL */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="relative w-full max-w-lg mx-4 rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-8 shadow-[0_40px_120px_rgba(0,0,0,0.8)] overflow-hidden"
+            >
+
+              {/* GLOW BACKGROUND */}
+              <div className="absolute -top-20 -left-20 w-60 h-60 bg-teal-500/20 blur-[120px] rounded-full pointer-events-none" />
+              <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-orange-500/10 blur-[120px] rounded-full pointer-events-none" />
+
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={closeModal}
+                className="absolute top-5 right-5 text-gray-400 hover:text-white text-lg"
+              >
+                ✕
+              </button>
+
+              {/* HEADER */}
+              <div className="mb-8">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-teal-400 mb-3">
+                  Program Enquiry
+                </p>
+
+                <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                  Enquire for{" "}
+                  <span className="text-teal-400">
+                    {selectedProgram}
+                  </span>
+                </h2>
+
+                <p className="text-gray-400 text-sm mt-3">
+                  Share your details and we’ll connect with you shortly.
+                </p>
+              </div>
+
+              {/* FORM */}
+              <form onSubmit={handleSubmit} className="space-y-5">
+
+                {/* NAME */}
+                <div className="relative">
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Full Name"
+                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                  />
+                </div>
+
+                {/* EMAIL */}
+                <div className="relative">
+                  <input
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    type="email"
+                    required
+                    placeholder="Email Address"
+                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                  />
+                </div>
+
+                {/* PHONE */}
+                <div className="relative">
+                  <input
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="Phone Number"
+                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                  />
+                </div>
+
+                {/* PROFESSION */}
+                <div className="relative">
+                  <input
+                    name="profession"
+                    value={form.profession}
+                    onChange={handleChange}
+                    placeholder="Profession (optional)"
+                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                  />
+                </div>
+
+                {/* SUBMIT */}
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  type="submit"
+                  className="relative w-full mt-6 py-5 rounded-full bg-white text-black font-bold tracking-wide shadow-xl overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Submit Enquiry
+                    <ArrowRight size={18} />
+                  </span>
+
+                  {/* BUTTON GLOW */}
+                  <div className="absolute inset-0 bg-teal-400/0 hover:bg-teal-400/20 transition-all duration-300" />
+                </motion.button>
+
+              </form>
+            </motion.div>
+          </div>
+        )}
+
+
+
         <Footer />
+
+
+        {toast.show && (
+  <div className="fixed bottom-6 right-6 z-[100]">
+
+    <div
+      className={`relative px-6 py-4 rounded-2xl border backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] flex items-center gap-3 transition-all duration-300
+      ${toast.type === "success"
+        ? "bg-teal-500/10 border-teal-400/30 text-teal-300"
+        : "bg-red-500/10 border-red-400/30 text-red-300"
+      }`}
+    >
+
+      {/* glow */}
+      <div className="absolute inset-0 rounded-2xl blur-xl opacity-40 pointer-events-none 
+        ${toast.type === 'success' ? 'bg-teal-500/20' : 'bg-red-500/20'}"
+      />
+
+      {/* dot */}
+      <div
+        className={`w-3 h-3 rounded-full 
+        ${toast.type === "success" ? "bg-teal-400" : "bg-red-400"}
+        shadow-[0_0_10px_rgba(255,255,255,0.5)]`}
+      />
+
+      {/* message */}
+      <p className="text-sm font-medium relative z-10">
+        {toast.message}
+      </p>
+    </div>
+  </div>
+)}
       </main>
     </>
   );

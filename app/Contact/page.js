@@ -4,8 +4,54 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { db } from "../lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Contact() {
+const [showToast, setShowToast] = useState(false);
+
+const [form, setForm] = useState({
+  name: "",
+  email: "",
+  goal: "",
+  message: ""
+});
+
+const handleChange = (e) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await addDoc(collection(db, "leads"), {
+      type: "booking",
+      ...form,
+      createdAt: serverTimestamp()
+    });
+
+    setShowToast(true);
+
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+
+    setForm({
+      name: "",
+      email: "",
+      goal: "",
+      message: ""
+    });
+
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong");
+  }
+};
+
+
   return (
     <>
       <Navbar />
@@ -235,72 +281,107 @@ export default function Contact() {
 
         {/* FORM SECTION */}
         <section className="relative z-10 mx-auto max-w-4xl px-4 pb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl p-8 md:p-16 shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
-          >
-            {/* GLASS SHIMMER TOP EDGE */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="relative rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl p-8 md:p-16 shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
+  >
+    {/* GLASS SHIMMER TOP EDGE */}
+    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold">Book a Conversation</h2>
-              <p className="text-gray-500 mt-4 text-sm tracking-wide">
-                Serious inquiries only • Response within 24–48 hours
-              </p>
-            </div>
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold">Book a Conversation</h2>
+      <p className="text-gray-500 mt-4 text-sm tracking-wide">
+        Serious inquiries only • Response within 24–48 hours
+      </p>
+    </div>
 
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">Full Name</label>
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">Email Address</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
-                  />
-                </div>
-              </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">Growth Goal</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Leadership Clarity, Team Alignment..."
-                  className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
-                />
-              </div>
+        {/* NAME */}
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">
+            Full Name
+          </label>
+          <input
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            type="text"
+            placeholder="John Doe"
+            required
+            className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
+          />
+        </div>
 
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">Context</label>
-                <textarea
-                  rows="5"
-                  placeholder="Share a bit about your current challenges..."
-                  className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all resize-none"
-                />
-              </div>
+        {/* EMAIL */}
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">
+            Email Address
+          </label>
+          <input
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            type="email"
+            placeholder="john@example.com"
+            required
+            className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
+          />
+        </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="group relative w-full mt-6 rounded-full bg-white text-black font-bold px-8 py-5 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-white/10"
-              >
-                Request a Call
-                <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </motion.button>
-            </form>
-          </motion.div>
+      </div>
+
+      {/* GOAL */}
+      <div className="space-y-2">
+        <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">
+          Growth Goal
+        </label>
+        <input
+          name="goal"
+          value={form.goal}
+          onChange={handleChange}
+          type="text"
+          placeholder="e.g., Leadership Clarity, Team Alignment..."
+          required
+          className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all"
+        />
+      </div>
+
+      {/* MESSAGE */}
+      <div className="space-y-2">
+        <label className="text-[10px] uppercase tracking-widest text-gray-500 ml-4">
+          Context
+        </label>
+        <textarea
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          rows="5"
+          placeholder="Share a bit about your current challenges..."
+          required
+          className="w-full rounded-2xl bg-white/[0.03] border border-white/10 p-4 text-white placeholder-gray-600 focus:outline-none focus:border-teal-500/50 focus:bg-white/[0.05] transition-all resize-none"
+        />
+      </div>
+
+      {/* BUTTON */}
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        type="submit"
+        className="group relative w-full mt-6 rounded-full bg-white text-black font-bold px-8 py-5 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-white/10"
+      >
+        Request a Call
+        <Send
+          size={18}
+          className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+        />
+      </motion.button>
+    </form>
+  </motion.div>
         </section>
 
         {/* TRUST SIGNATURE */}
@@ -309,6 +390,27 @@ export default function Contact() {
             Confidentiality Guaranteed • Elite Personal Review
           </p>
         </section>
+
+
+
+        {/* SUCCESS TOAST */}
+{showToast && (
+  <div className="fixed bottom-6 right-6 z-50">
+    <div className="relative px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex items-center gap-3 animate-[fadeIn_.4s_ease]">
+
+      {/* Glow */}
+      <div className="absolute inset-0 rounded-2xl bg-teal-500/10 blur-xl opacity-40 pointer-events-none" />
+
+      {/* Content */}
+      <div className="relative flex items-center gap-3">
+        <div className="w-3 h-3 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(20,184,166,0.8)]" />
+        <p className="text-sm text-gray-200 font-medium">
+          Request sent successfully
+        </p>
+      </div>
+    </div>
+  </div>
+)}
 
       </main>
 

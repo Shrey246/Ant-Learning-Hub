@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google"; // Using a clean, professional font
 import "./globals.css";
 
+
+
 // Configure the font for a premium, readable feel
 const inter = Inter({ 
   subsets: ["latin"],
@@ -11,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ant Learning Hub",
   description: "Leadership and coaching experiences designed for growth.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   // Optional: Add icons or theme colors for mobile status bars
   themeColor: "#030812",
 };

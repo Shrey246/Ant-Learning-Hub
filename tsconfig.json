@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/components/AboutPreview.js", "app/components/Audience.js", "app/components/CTA.js", "app/Contact/ContactClient.js", "app/Contact/page.js", "app/programs/page.js", "app/programs/ProgramsClient.js", "app/admin/Login/page.js"  ],
   "exclude": ["node_modules"]
 }

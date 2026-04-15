@@ -182,7 +182,7 @@ export default function Programs() {
     <>
       <Navbar />
 
-      <main className="relative min-h-screen overflow-hidden bg-[#030812] text-white pt-32 md:pt-44">
+      <main className="relative min-h-screen overflow-hidden bg-[#030812] text-white pt-12 md:pt-28">
         
         {/* --- THE ENHANCED TOP-DOWN ATMOSPHERE --- */}
         <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
@@ -210,21 +210,21 @@ export default function Programs() {
             </p>
             <h1
               id="programs-heading"
-              className="mt-8 text-5xl md:text-8xl font-bold tracking-tight bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent leading-[0.95]"
+              className="mt-4 text-5xl md:text-8xl font-bold tracking-tight bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent leading-[0.95]"
               style={{ paddingBottom: '12px' }}
             >
               Coaching <br className="lg:hidden" /> Programs
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+            <p className="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
               Architected for high-performance leadership. Move from abstract intention 
               to concrete action through structured behavioural mastery.
             </p>
           </motion.div>
 
           {/* HIGHLIGHTS */}
-          <dl className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6" aria-label="Program highlights">
+          <dl className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6" aria-label="Program highlights">
             {highlights.map((item, i) => (
-              <div key={i} className="relative rounded-3xl border border-white/5 bg-white/[0.03] p-8 backdrop-blur-md overflow-hidden">
+              <div key={i} className="relative rounded-3xl border border-white/5 bg-white/[0.03] p-5 backdrop-blur-md overflow-hidden">
                 <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <dd className="text-4xl font-bold text-white tracking-tighter">{item.value}</dd>
                 <dt className="text-[10px] uppercase tracking-widest text-gray-500 mt-2 font-bold">{item.label}</dt>
@@ -236,14 +236,14 @@ export default function Programs() {
         {/* PROGRAM CARDS */}
         <section
           aria-labelledby="program-cards-heading"
-          className="relative z-10 mx-auto max-w-7xl px-4 py-32 sm:px-6 md:px-10"
+          className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 md:px-10"
         >
           {/* Visually hidden heading for screen readers / crawlers */}
           <h2 id="program-cards-heading" className="sr-only">
             Available Coaching Programs
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 xl:gap-6">
             {programGroups.map((program, index) => {
               const Icon = program.icon;
               const isInactive = !isMobile && active !== null && active !== index;
@@ -260,7 +260,7 @@ export default function Programs() {
                     y: active === index && !isMobile ? -10 : 0
                   }}
                   className={`relative flex flex-col rounded-[2.8rem] border ${program.borderBase} ${program.cardBg} 
-                             p-10 md:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.6)] backdrop-blur-3xl 
+                             p-6 md:p-8 shadow-[0_30px_60px_rgba(0,0,0,0.6)] backdrop-blur-3xl 
                              group transition-all duration-700 ${program.borderHover}`}
                 >
                   {/* FOCUSED LIGHT LEAK */}
@@ -269,7 +269,7 @@ export default function Programs() {
                   {/* TOP ETCHED EDGE */}
                   <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                   
-                  <div className="flex justify-between items-start mb-10 relative z-10">
+                  <div className="flex justify-between items-start mb-5 relative z-10">
                     <div aria-hidden="true" className={`p-4 rounded-2xl ${program.iconBg} ${program.iconText} border border-white/10 shadow-lg transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3`}>
                       <Icon size={26} />
                     </div>
@@ -279,16 +279,16 @@ export default function Programs() {
                     <p className={`text-[10px] font-bold uppercase tracking-[0.3em] mb-3 ${program.iconText}`}>
                       {program.subtitle}
                     </p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6 tracking-tight">
+                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-3 tracking-tight">
                       {program.title}
                     </h3>
-                    <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
+                    <p className="text-gray-400 text-sm font-light leading-relaxed mb-5">
                       {program.description}
                     </p>
 
-                    <div aria-hidden="true" className="my-8 w-full h-[1px] bg-white/10" />
+                    <div aria-hidden="true" className="my-4 w-full h-[1px] bg-white/10" />
 
-                    <ul aria-label={`${program.title} outcomes`} className="space-y-5 list-none p-0">
+                    <ul aria-label={`${program.title} outcomes`} className="space-y-3 list-none p-0">
                       {program.outcomes.map((outcome, idx) => (
                         <li key={idx} className="flex gap-4 text-sm font-light text-gray-300 items-start">
                           <CheckCircle2 size={18} aria-hidden="true" className={`${program.iconText} shrink-0 mt-0.5 opacity-80`} />
@@ -301,7 +301,7 @@ export default function Programs() {
                     </ul>
                   </div>
 
-                  <div className="mt-14 relative z-10">
+                  <div className="mt-6 relative z-10">
                     <button
                       onClick={() => openModal(program.title)}
                       aria-label={`Enquire about ${program.title} coaching program`}
@@ -322,23 +322,23 @@ export default function Programs() {
         {/* GUIDING PRINCIPLES */}
         <section
           aria-labelledby="principles-heading"
-          className="mx-auto max-w-7xl px-4 py-32 sm:px-6 md:px-10 border-t border-white/5 bg-black/20"
+          className="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:px-10 border-t border-white/5 bg-black/20"
         >
-          <div className="text-center mb-24">
+          <div className="text-center mb-8">
             <h2 id="principles-heading" className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
               Guiding Principles
             </h2>
-            <p className="mt-6 text-gray-500 uppercase tracking-widest text-xs font-bold">
+            <p className="mt-3 text-gray-500 uppercase tracking-widest text-xs font-bold">
               The Core Behavioral Architecture
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {principles.map((p, i) => (
-              <article key={i} className="relative p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors duration-500">
-                <div className="h-12 w-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-8 ring-1 ring-teal-500/30" aria-hidden="true">
+              <article key={i} className="relative p-6 rounded-[2.5rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors duration-500">
+                <div className="h-12 w-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-4 ring-1 ring-teal-500/30" aria-hidden="true">
                   {p.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4 tracking-tight">{p.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">{p.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed font-light">{p.text}</p>
               </article>
             ))}
@@ -365,7 +365,7 @@ export default function Programs() {
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative w-full max-w-lg mx-4 rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-8 shadow-[0_40px_120px_rgba(0,0,0,0.8)] overflow-hidden"
+              className="relative w-full max-w-lg mx-4 rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-6 shadow-[0_40px_120px_rgba(0,0,0,0.8)] overflow-hidden"
             >
               {/* GLOW BACKGROUND */}
               <div aria-hidden="true" className="absolute -top-20 -left-20 w-60 h-60 bg-teal-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -381,7 +381,7 @@ export default function Programs() {
               </button>
 
               {/* HEADER */}
-              <div className="mb-8">
+              <div className="mb-5">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-teal-400 mb-3">
                   Program Enquiry
                 </p>
@@ -399,7 +399,7 @@ export default function Programs() {
               </div>
 
               {/* FORM */}
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
 
                 {/* NAME */}
                 <div className="relative">
@@ -468,7 +468,7 @@ export default function Programs() {
                   whileTap={{ scale: 0.97 }}
                   type="submit"
                   aria-label={`Submit enquiry for ${selectedProgram}`}
-                  className="relative w-full mt-6 py-5 rounded-full bg-white text-black font-bold tracking-wide shadow-xl overflow-hidden"
+                  className="relative w-full mt-4 py-5 rounded-full bg-white text-black font-bold tracking-wide shadow-xl overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Submit Enquiry

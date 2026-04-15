@@ -15,7 +15,7 @@ import {
 
 const trustSignals = [
   "Leadership clarity for professionals",
-  "Mindset shifts that drive action",
+  "Mindset + Toolset = Skillset",
   "Coaching for teams, founders, and students",
 ];
 
@@ -62,7 +62,7 @@ export default function Hero() {
   return (
     <section
       aria-label="Leadership coaching — lead with clarity, inspire with presence"
-      className="relative isolate min-h-screen overflow-hidden bg-[#030812] text-white flex items-center pt-28 pb-20 md:pt-40 lg:pt-32 lg:pb-0"
+      className="relative isolate min-h-screen overflow-hidden bg-[#030812] text-white flex items-center pt-24 pb-10 md:pt-32 lg:pt-28 lg:pb-0"
     >
       {/* BACKGROUND ELEMENTS — decorative, hidden from assistive tech */}
       <div aria-hidden="true" className="hero-grid absolute inset-0 opacity-20 pointer-events-none" />
@@ -75,7 +75,7 @@ export default function Hero() {
         transition={{ duration: 15, repeat: Infinity }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 xl:gap-20 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-20 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 xl:gap-20 items-center">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col justify-center text-center lg:text-left">
@@ -95,7 +95,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+            className="mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
           >
             Lead with clarity.{" "}
             <br className="hidden sm:block" />
@@ -109,9 +109,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 mx-auto lg:mx-0 max-w-lg lg:max-w-xl text-base sm:text-lg text-gray-400 font-light leading-relaxed"
+            className="mt-2 mx-auto lg:mx-0 max-w-lg lg:max-w-xl text-base sm:text-lg text-gray-400 font-light leading-relaxed"
           >
-            Transform ambition into grounded leadership with coaching that strengthens mindset, communication, and action.
+          If you Aspire to be a better version of yourself we with Nurture you through our programs and you will be Transformed to the best version of yourself.
           </motion.p>
 
           {/* CTA buttons */}
@@ -119,7 +119,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
+            className="mt-3 flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
           >
             <Link
               href="/programs"
@@ -142,7 +142,7 @@ export default function Hero() {
           {/* Trust signals — semantic list */}
           <ul
             aria-label="Why choose this coaching"
-            className="mt-10 space-y-3 flex flex-col items-center lg:items-start list-none p-0"
+            className="mt-4 space-y-2 flex flex-col items-center lg:items-start list-none p-0"
           >
             {trustSignals.map((signal, i) => (
               <li key={i} className="flex items-center gap-3 text-[11px] sm:text-sm text-gray-400 text-left w-full max-w-md lg:max-w-none">
@@ -153,7 +153,7 @@ export default function Hero() {
           </ul>
 
           {/* Stats — semantic description list */}
-          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-lg mx-auto lg:max-w-none lg:mx-0">
+          <dl className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-lg mx-auto lg:max-w-none lg:mx-0">
             {stats.map((item, i) => (
               <div key={i} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 text-center lg:text-left">
                 <dt className="text-[10px] text-gray-500 uppercase tracking-widest mt-1 order-2">{item.label}</dt>
@@ -167,7 +167,7 @@ export default function Hero() {
         <div
           role="img"
           aria-label="Visual overview of coaching pillars: Strategic Leadership, Behavioral Mastery, Org Development, and High Performance"
-          className="relative mt-24 lg:mt-0 flex items-center justify-center w-full overflow-visible"
+          className="relative mt-8 lg:mt-0 flex items-center justify-center w-full overflow-visible"
         >
           <div className="relative w-full max-w-[350px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[550px] aspect-square">
 
@@ -224,7 +224,7 @@ export default function Hero() {
                 </p>
 
                 {/* CORE PILLARS — semantic list */}
-                <ul aria-label="Core coaching pillars" className="mt-4 md:mt-10 space-y-1.5 sm:space-y-4 list-none p-0">
+                <ul aria-label="Core coaching pillars" className="mt-2 md:mt-4 space-y-1.5 sm:space-y-4 list-none p-0">
                   {corePillars.map((item, i) => {
                     const PIcon = item.icon;
                     return (

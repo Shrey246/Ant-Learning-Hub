@@ -16,14 +16,14 @@ export default function Testimonials() {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative overflow-hidden bg-[#030812] text-white px-4 py-24">
+    <section className="relative overflow-hidden bg-[#030812] text-white px-4 py-10">
       
       {/* CENTRAL GLOW */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-teal-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
@@ -32,53 +32,57 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        <div className="relative mt-20 flex overflow-hidden py-5">
+        <div className="relative mt-8 flex overflow-hidden py-3">
           {/* MASKING GRADIENTS */}
           <div className="absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-[#030812] to-transparent pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-[#030812] to-transparent pointer-events-none" />
 
           <motion.div
-            className="flex gap-8 pr-8"
+            className="flex gap-5 pr-5"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               ease: "linear",
-              duration: 60, // Slower is more elegant
+              duration: 60,
               repeat: Infinity,
             }}
           >
             {duplicatedTestimonials.map((t, i) => (
               <div
                 key={i}
-                className="relative min-w-[320px] md:min-w-[380px] rounded-3xl p-8 
+                className="relative min-w-[300px] md:min-w-[360px] rounded-3xl p-6 
                            backdrop-blur-md border border-white/10 bg-white/[0.02] 
                            shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between"
               >
-                {/* DECORATIVE QUOTE */}
-                <Quote className="absolute top-6 right-8 text-white/[0.03]" size={40} />
+                {/* QUOTE */}
+                <Quote className="absolute top-5 right-6 text-white/[0.03]" size={34} />
 
                 <div>
-                  <div className="mb-6 flex gap-1 text-teal-400/60">
+                  <div className="mb-4 flex gap-1 text-teal-400/60">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" />
+                      <Star key={i} size={13} fill="currentColor" />
                     ))}
                   </div>
-                  <p className="text-gray-300 leading-relaxed text-base italic">
+
+                  <p className="text-gray-300 leading-relaxed text-sm italic">
                     “{t.text}”
                   </p>
                 </div>
 
-                <div className="mt-8 flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-teal-500/20 to-orange-500/10 border border-white/10 flex items-center justify-center text-xs font-bold text-teal-200">
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full bg-gradient-to-br from-teal-500/20 to-orange-500/10 border border-white/10 flex items-center justify-center text-xs font-bold text-teal-200">
                     {t.name.charAt(0)}
                   </div>
+
                   <div className="text-left">
                     <h3 className="text-sm font-semibold text-white">{t.name}</h3>
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mt-0.5">{t.role}</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5">
+                      {t.role}
+                    </p>
                   </div>
                 </div>
 
-                {/* PERMANENT TOP ACCENT LINE */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-teal-500/40 to-transparent" />
+                {/* TOP ACCENT */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-teal-500/40 to-transparent" />
               </div>
             ))}
           </motion.div>

@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
 
       setTimeout(() => {
         setShowToast(false);
-      }, 3000);
+      }, 8000);
 
     setForm({
       name: "",
@@ -56,14 +56,14 @@ const handleSubmit = async (e) => {
     <>
       <Navbar />
 
-      <main className="relative bg-[#030812] text-white overflow-hidden pt-32 md:pt-44">
+      <main className="relative bg-[#030812] text-white overflow-hidden pt-32 md:pt-22">
         
         {/* ATMOSPHERIC BACKGROUND GLOWS */}
         <div className="absolute top-0 left-[-10%] w-[500px] h-[500px] bg-teal-500/10 blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-orange-500/5 blur-[130px] rounded-full pointer-events-none" />
 
         {/* HERO HEADER */}
-        <section className="relative z-10 mx-auto max-w-4xl px-4 text-center mb-16">
+        <section className="relative z-10 mx-auto max-w-4xl px-4 text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,15 +86,15 @@ const handleSubmit = async (e) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-8 text-lg text-gray-400 max-w-2xl mx-auto font-light leading-relaxed"
+            className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto font-light leading-relaxed"
           >
             If you’re ready to bridge the gap between where you are and where you want to be, share your details below. Every inquiry is personally reviewed to ensure a high-impact partnership.
           </motion.p>
         </section>
 
         {/* CONTACT INFO CARDS */}
-        <section className="relative z-10 mx-auto max-w-5xl px-4 pb-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="relative z-10 mx-auto max-w-5xl px-4 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { title: "Email", value: "coachpraveenjp@gmail.com", icon: <Mail size={18} /> },
               { title: "Phone", value: "+91 98451 21178", icon: <Phone size={18} /> },
@@ -126,7 +126,7 @@ const handleSubmit = async (e) => {
         </section>
 
  {/* --- WHY CHOOSE + WHO HE WORKS WITH (PREMIUM REDESIGN) --- */}
-<section className="relative z-10 bg-[#030812] px-8 py-20">
+<section className="relative z-10 bg-[#030812] px-8 py-16">
   <style>{`
     @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
     @keyframes pulseRing { 0%,100% { transform:scale(1); opacity:.15; } 50% { transform:scale(1.08); opacity:.28; } }
@@ -139,7 +139,7 @@ const handleSubmit = async (e) => {
     .tag-pill { transition: all .25s cubic-bezier(.34,1.56,.64,1); }
   `}</style>
 
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
 
     {/* ── LEFT: WHY CHOOSE PRAVEEN ── */}
     <div style={{ animation: "fadeUp .6s ease both" }}>
@@ -149,7 +149,7 @@ const handleSubmit = async (e) => {
         <span className="text-[11px] tracking-widest uppercase font-semibold text-teal-400">Your Coach</span>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-10 leading-tight text-white">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight text-white">
         Why Choose{" "}
         <span style={{ background: "linear-gradient(135deg,#14b8a6,#818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Praveen
@@ -182,7 +182,7 @@ const handleSubmit = async (e) => {
         ].map((item, i) => (
           <motion.div
             key={i}
-            className="why-item flex gap-4 py-5 border-b border-white/[0.06] last:border-0"
+            className="why-item flex gap-4 py-4 border-b border-white/[0.06] last:border-0"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
@@ -210,7 +210,7 @@ const handleSubmit = async (e) => {
         <span className="text-[11px] tracking-widest uppercase font-semibold text-indigo-400">Clientele</span>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-10 leading-tight text-white">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight text-white">
         Who He{" "}
         <span style={{ background: "linear-gradient(135deg,#818cf8,#f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Works With
@@ -218,7 +218,7 @@ const handleSubmit = async (e) => {
       </h2>
 
       {/* 2x2 featured cards */}
-      <div className="grid grid-cols-2 gap-3 mb-3">
+      <div className="grid grid-cols-2 gap-2.5 mb-2">
         {[
           { emoji: "🏢", color: "#14b8a6", bg: "rgba(20,184,166,.06)", border: "rgba(20,184,166,.2)", pulse: "rgba(20,184,166,.1)", t: "Corporate leaders", s: "& executives", sc: "#7dd3fc", dur: "3s" },
           { emoji: "🧩", color: "#818cf8", bg: "rgba(129,140,248,.06)", border: "rgba(129,140,248,.2)", pulse: "rgba(129,140,248,.1)", t: "HR professionals", s: "& OD teams", sc: "#c4b5fd", dur: "3.4s" },
@@ -246,7 +246,7 @@ const handleSubmit = async (e) => {
       </div>
 
       {/* Shimmer divider */}
-      <div className="relative my-5">
+      <div className="relative my-4">
         <div className="shimmer-line" />
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0d1117] px-3 text-[11px] text-white/25 tracking-widest uppercase">
           and also
@@ -280,26 +280,26 @@ const handleSubmit = async (e) => {
 </section>
 
         {/* FORM SECTION */}
-        <section className="relative z-10 mx-auto max-w-4xl px-4 pb-32">
+        <section className="relative z-10 mx-auto max-w-4xl px-4 pb-6">
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
-    className="relative rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl p-8 md:p-16 shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
+    className="relative rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl p-6 md:p-12 shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
   >
     {/* GLASS SHIMMER TOP EDGE */}
     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-    <div className="text-center mb-12">
+    <div className="text-center mb-8">
       <h2 className="text-3xl md:text-4xl font-bold">Book a Conversation</h2>
-      <p className="text-gray-500 mt-4 text-sm tracking-wide">
+      <p className="text-gray-500 mt-3 text-sm tracking-wide">
         Serious inquiries only • Response within 24–48 hours
       </p>
     </div>
 
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         {/* NAME */}
         <div className="space-y-2">
@@ -372,7 +372,7 @@ const handleSubmit = async (e) => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        className="group relative w-full mt-6 rounded-full bg-white text-black font-bold px-8 py-5 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-white/10"
+        className="group relative w-full mt-4 rounded-full bg-white text-black font-bold px-8 py-4 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-white/10"
       >
         Request a Call
         <Send
@@ -385,7 +385,7 @@ const handleSubmit = async (e) => {
         </section>
 
         {/* TRUST SIGNATURE */}
-        <section className="text-center pb-24 px-4 opacity-50">
+        <section className="text-center pb-5 px-4 opacity-50">
           <p className="text-gray-500 text-xs uppercase tracking-[0.3em]">
             Confidentiality Guaranteed • Elite Personal Review
           </p>
@@ -396,7 +396,7 @@ const handleSubmit = async (e) => {
         {/* SUCCESS TOAST */}
 {showToast && (
   <div className="fixed bottom-6 right-6 z-50">
-    <div className="relative px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex items-center gap-3 animate-[fadeIn_.4s_ease]">
+    <div className="relative px-6 py-4 rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex items-center gap-2.5 animate-[fadeIn_.4s_ease]">
 
       {/* Glow */}
       <div className="absolute inset-0 rounded-2xl bg-teal-500/10 blur-xl opacity-40 pointer-events-none" />

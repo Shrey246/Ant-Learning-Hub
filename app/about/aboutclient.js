@@ -12,14 +12,14 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      <main className="relative bg-[#030812] text-white overflow-hidden pt-32 md:pt-40">
+      <main className="relative bg-[#030812] text-white overflow-hidden pt-24 md:pt-32">
         
         {/* ATMOSPHERIC BACKGROUND */}
         <div className="absolute top-0 left-[-10%] w-[500px] h-[500px] bg-teal-500/10 blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-orange-500/5 blur-[130px] rounded-full pointer-events-none" />
 
         {/* --- BIO HERO SECTION --- */}
-        <section className="relative mx-auto grid max-w-7xl gap-16 px-4 py-12 md:grid-cols-2 items-center sm:px-6 md:px-10">
+        <section className="relative mx-auto grid max-w-7xl gap-8 px-4 py-5 md:grid-cols-2 items-center sm:px-6 md:px-10">
           
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-2 md:-right-8 z-20 p-6 rounded-3xl backdrop-blur-2xl border border-white/10 bg-white/[0.05] shadow-2xl"
+              className="absolute -bottom-6 -right-2 md:-right-8 z-20 p-4 rounded-3xl backdrop-blur-2xl border border-white/10 bg-white/[0.05] shadow-2xl"
             >
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
               <p className="text-4xl font-bold text-teal-300 drop-shadow-md">24+</p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-[0.3em] text-teal-400 mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-[0.3em] text-teal-400 mb-3">
               <Sparkles size={12} />
               The Coach
             </div>
@@ -63,9 +63,9 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
               Praveen John Purushotham
             </h1>
-           <div className="mt-6 md:mt-8 space-y-4 md:space-y-6">
+           <div className="mt-2 md:mt-2 space-y-2 md:space-y-2">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              Praveen John Purushotham is a certified coach who believes that meaningful growth begins
+              Praveen John Purushotham is an ICF and NLP certified coach who believes that meaningful growth begins
               with awareness and is sustained through conscious action.
             </p>
 
@@ -74,10 +74,10 @@ export default function AboutPage() {
               Leadership and Behavioural Training excellence.
             </p>
 
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
+            <p className="text-sm md:text-base text-gray-300 leading-relaxed max-w-lg mx-auto md:mx-0">
               With a background in leadership, behavioural training, and organisational development,
               Praveen helps individuals navigate challenges, manage emotions, and build confidence with
-              clarity. His coaching style is supportive, non-judgmental, and deeply practical — helping clients
+              clarity. His programs & coaching style is supportive, non-judgmental, and deeply practical — helping clients
               move from confusion to direction, and from intention to execution.
             </p>
 
@@ -91,8 +91,8 @@ export default function AboutPage() {
         </section>
 
         {/* --- STATS SECTION --- */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 md:px-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-4">
             {[
               { value: "24+", label: "Years Experience", icon: <Briefcase size={20}/> },
               { value: "1000+", label: "People Guided", icon: <Users size={20}/> },
@@ -104,9 +104,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="relative glass rounded-3xl p-8 text-center border border-white/5 bg-white/[0.02]"
+                className="relative glass rounded-3xl p-5 text-center border border-white/5 bg-white/[0.02]"
               >
-                <div className="mx-auto w-fit p-3 rounded-2xl bg-teal-500/10 text-teal-400 mb-4 ring-1 ring-teal-500/20">
+                <div className="mx-auto w-fit p-3 rounded-2xl bg-teal-500/10 text-teal-400 mb-2 ring-1 ring-teal-500/20">
                   {item.icon}
                 </div>
                 <h3 className="text-3xl font-bold text-white">{item.value}</h3>
@@ -117,10 +117,10 @@ export default function AboutPage() {
         </section>
 
         {/* --- EXPERTISE SECTION (ADDED, NOTHING ELSE TOUCHED) --- */}
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:px-10">
-          <div className="text-center mb-16">
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-10">
+          <div className="text-center mb-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white">Expertise You Can Trust</h2>
-            <div className="mt-4 w-12 h-1 bg-teal-500 mx-auto rounded-full opacity-50" />
+            <div className="mt-2 w-12 h-1 bg-teal-500 mx-auto rounded-full opacity-50" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -156,7 +156,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="glass p-6 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-500"
+                className="glass p-4 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-500"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-teal-500/10 text-teal-400">
@@ -173,10 +173,10 @@ export default function AboutPage() {
         </section>
 
         {/* --- TIMELINE SECTION --- */}
-        <section className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
-          <div className="text-center mb-20">
+        <section className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Journey of Growth</h2>
-            <div className="mt-4 w-12 h-1 bg-teal-500 mx-auto rounded-full opacity-50" />
+            <div className="mt-2 w-12 h-1 bg-teal-500 mx-auto rounded-full opacity-50" />
           </div>
 
           <div className="relative">
@@ -194,14 +194,14 @@ export default function AboutPage() {
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className={`relative mb-16 flex flex-col md:flex-row items-start md:items-center ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                className={`relative mb-6 flex flex-col md:flex-row items-start md:items-center ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 <div className="absolute left-[15px] md:left-1/2 -translate-x-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-[#030812] border border-teal-500/50 shadow-[0_0_15px_rgba(20,184,166,0.4)]">
                   <div className="w-2 h-2 rounded-full bg-teal-400" />
                 </div>
 
                 <div className="ml-10 md:ml-0 md:w-1/2 px-4 md:px-12">
-                  <div className="glass p-6 rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-xl hover:bg-white/[0.06] transition-colors duration-500">
+                  <div className="glass p-4 rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-xl hover:bg-white/[0.06] transition-colors duration-500">
                     <p className="text-gray-300 font-light leading-relaxed">{item}</p>
                   </div>
                 </div>
@@ -213,10 +213,10 @@ export default function AboutPage() {
         {/* --- FOCUS AREAS GRID --- */}
         {/* (UNCHANGED, continues...) */}
         {/* --- FOCUS AREAS GRID --- */}
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:px-10">
-          <div className="text-center mb-16">
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-10">
+          <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Key Focus Areas</h2>
-            <p className="mt-4 text-gray-500">Mastering the pillars of organizational excellence.</p>
+            <p className="mt-2 text-gray-500">Mastering the pillars of organizational excellence.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -244,22 +244,22 @@ export default function AboutPage() {
         </section>
 
         {/* --- FINAL CTA --- */}
-        <section className="mx-auto max-w-4xl px-4 py-32 text-center">
+        <section className="mx-auto max-w-4xl px-4 py-10 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-[2.5rem] p-12 md:p-20 overflow-hidden backdrop-blur-2xl border border-white/10 bg-white/[0.02] shadow-3xl"
+            className="relative rounded-[2.5rem] p-8 md:p-8 overflow-hidden backdrop-blur-2xl border border-white/10 bg-white/[0.02] shadow-3xl"
           >
              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
               Start Your <br /> <span className="text-teal-400">Growth Journey</span>
             </h2>
-            <p className="mt-6 text-lg text-gray-400 font-light max-w-xl mx-auto">
+            <p className="mt-2 text-lg text-gray-400 font-light max-w-xl mx-auto">
               Real change begins with awareness and the right high-impact guidance.
             </p>
-            <div className="mt-10">
+            <div className="mt-4">
               <Link
                 href="/Contact"
                 className="group relative inline-flex items-center gap-2 rounded-full bg-white text-black px-10 py-4 font-bold transition-all hover:scale-105 active:scale-95 shadow-xl"

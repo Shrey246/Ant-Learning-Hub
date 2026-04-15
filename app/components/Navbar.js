@@ -55,7 +55,7 @@ export default function Navbar() {
 
     setTimeout(() => {
       setToast({ show: false, message: "", type: "success" });
-    }, 3000);
+    }, 8000);
   };
 
   const formatDate = (date) => {

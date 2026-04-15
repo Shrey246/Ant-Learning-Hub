@@ -155,7 +155,7 @@ export default function Programs() {
 
       setTimeout(() => {
         setToast({ show: false, message: "", type: "success" });
-      }, 3000);
+      }, 8000);
 
       setShowModal(false);
       setForm({

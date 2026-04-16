@@ -30,25 +30,25 @@ const orbitCards = [
     title: "Strategic Leadership",
     text: "Navigate complexity and drive visionary change.",
     icon: Target,
-    position: "top-[10%] left-[20%] -translate-x-1/2 -translate-y-1/2 sm:top-[0%] sm:left-[10%]",
+    position: "top-[0%] left-[10%] -translate-x-1/2 -translate-y-1/2",
   },
   {
     title: "Behavioral Mastery",
     text: "Develop emotional intelligence and adaptive habits.",
     icon: Users,
-    position: "top-[14%] right-[18%] translate-x-1/2 -translate-y-1/2 sm:top-[9%] sm:right-[10%]",
+    position: "top-[9%] right-[10%] translate-x-1/2 -translate-y-1/2",
   },
   {
     title: "Org Development",
     text: "Align teams, optimize systems, and scale impact.",
     icon: TrendingUp,
-    position: "bottom-[10%] left-[20%] -translate-x-1/2 translate-y-1/2 sm:bottom-[0%] sm:left-[10%]",
+    position: "bottom-[0%] left-[10%] -translate-x-1/2 translate-y-1/2",
   },
   {
     title: "High Performance",
     text: "Sustain excellence through resilience and focus.",
     icon: ShieldCheck,
-    position: "bottom-[12%] right-[20%] translate-x-1/2 translate-y-1/2 sm:bottom-[3%] sm:right-[15%]",
+    position: "bottom-[3%] right-[15%] translate-x-1/2 translate-y-1/2",
   },
 ];
 
@@ -175,9 +175,9 @@ export default function Hero() {
         <div
           role="img"
           aria-label="Visual overview of coaching pillars: Strategic Leadership, Behavioral Mastery, Org Development, and High Performance"
-          className="relative mt-8 flex w-full items-center justify-center overflow-hidden px-2 sm:overflow-visible sm:px-0 lg:mt-0"
+          className="relative mt-8 flex w-full items-center justify-center overflow-hidden px-2 sm:px-0 lg:mt-0 lg:overflow-visible"
         >
-          <div className="relative aspect-square w-full max-w-[300px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[550px]">
+          <div className="relative aspect-square w-full max-w-[300px] origin-center scale-[0.65] sm:max-w-[420px] sm:scale-[0.8] md:max-w-[500px] md:scale-100 lg:max-w-[550px] lg:aspect-square">
 
             <motion.div
               aria-hidden="true"
@@ -189,21 +189,33 @@ export default function Hero() {
             {/* ORBIT CARDS — each is a semantically described article */}
             {orbitCards.map((card, index) => {
               const Icon = card.icon;
+              const mobilePosition = card.position
+                .replace("top-[0%]", "top-[2%]")
+                .replace("top-[9%]", "top-[11%]")
+                .replace("bottom-[0%]", "bottom-[2%]")
+                .replace("bottom-[3%]", "bottom-[5%]")
+                .replace("left-[10%]", "left-[14%]")
+                .replace("right-[10%]", "right-[14%]")
+                .replace("right-[15%]", "right-[18%]");
+              const restoredPosition = card.position
+                .split(" ")
+                .map((token) => `sm:${token}`)
+                .join(" ");
               return (
                 <motion.article
                   key={index}
                   aria-label={`${card.title}: ${card.text}`}
-                  className={`absolute z-30 w-[128px] rounded-2xl border border-white/10 bg-[#030812]/95 p-2.5 backdrop-blur-xl shadow-2xl sm:w-[170px] sm:p-4 md:w-52 ${card.position}`}
+                  className={`absolute z-30 w-[110px] rounded-2xl border border-white/10 bg-[#030812]/95 p-2 backdrop-blur-xl shadow-2xl sm:w-[140px] sm:p-3 md:w-52 md:p-4 lg:absolute lg:w-[150px] lg:max-w-none lg:p-3 xl:w-[170px] 2xl:w-52 ${mobilePosition} ${restoredPosition}`}
                   animate={{ y: [0, index % 2 === 0 ? -5 : 5, 0], x: [0, index % 2 === 0 ? 3 : -3, 0] }}
                   transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
                 >
                   <div className="flex items-start gap-2 sm:gap-3">
                     <div className="rounded-xl bg-teal-500/10 p-1.5 text-teal-400 ring-1 ring-teal-500/20 shrink-0 sm:p-2" aria-hidden="true">
-                      <Icon size={14} className="sm:w-4 sm:h-4" />
+                      <Icon size={12} className="sm:w-[14px] sm:h-[14px] md:w-[18px] md:h-[18px]" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[10px] font-bold leading-tight text-white sm:text-sm">{card.title}</p>
-                      <p className="mt-1 text-[8px] leading-snug text-gray-400 sm:text-[10px]">{card.text}</p>
+                      <p className="text-[10px] font-bold leading-tight text-white sm:text-xs md:text-sm">{card.title}</p>
+                      <p className="mt-1 text-[10px] leading-snug text-gray-400 sm:text-xs md:text-sm">{card.text}</p>
                     </div>
                   </div>
                 </motion.article>
@@ -211,9 +223,9 @@ export default function Hero() {
             })}
 
             {/* CENTRAL CARD */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center lg:absolute lg:inset-0 lg:order-none">
               <motion.div
-                className="relative flex aspect-[4/5] w-[58%] flex-col justify-center overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-3 shadow-3xl backdrop-blur-3xl sm:w-[70%] sm:p-10 md:rounded-[3rem]"
+                className="relative flex aspect-[4/5] w-[60%] flex-col justify-center overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-3 shadow-3xl backdrop-blur-3xl sm:w-[70%] sm:p-10 md:w-[52%] md:rounded-[3rem]"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               >

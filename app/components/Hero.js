@@ -84,38 +84,28 @@ export default function Hero() {
 
 
           {/* Subheading / meta description mirror */}
-                  <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative mt-4 flex items-center justify-center lg:justify-start gap-2 text-sm sm:text-base md:text-lg font-Large tracking-[0.3em] text-teal-400">
-            <span className="relative text-teal-400 font-semibold">
-              <b>A</b>spire
-              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
-            </span>
+        <div className="relative mt-4 flex items-center justify-center lg:justify-start gap-2 text-sm sm:text-base md:text-lg font-Large tracking-[0.3em] text-teal-400">
+          
+          <span className="relative text-teal-400 font-semibold">
+            <b>A</b>spire
+            <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+          </span>
 
-            <motion.span
-              className="h-[2px] w-6 sm:w-10 bg-gradient-to-r from-gray-500 to-teal-400"
-              animate={{ width: ["20px", "40px", "20px"] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+          <span className="h-[2px] w-10 bg-gradient-to-r from-gray-500 to-teal-400" />
 
-            <span className="relative text-teal-400 font-semibold">
-              <b>N</b>urture
-              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
-            </span>
+          <span className="relative text-teal-400 font-semibold">
+            <b>N</b>urture
+            <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+          </span>
 
-            <motion.span
-              className="h-[2px] w-6 sm:w-10 bg-gradient-to-r from-teal-400 to-orange-400"
-              animate={{ width: ["20px", "40px", "20px"] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-            />
+          <span className="h-[2px] w-10 bg-gradient-to-r from-teal-400 to-orange-400" />
 
-            <span className="relative text-teal-400 font-semibold">
-              <b>T</b>ransform
-              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
-            </span>
-          </motion.div>
+          <span className="relative text-teal-400 font-semibold">
+            <b>T</b>ransform
+            <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+          </span>
+
+        </div>
 
           {/* Primary heading — critical for SEO */}
           <motion.h1

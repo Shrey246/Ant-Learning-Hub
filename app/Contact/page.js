@@ -18,7 +18,7 @@ export const metadata = {
     description:
       "Reach out to start your personal and professional growth journey with expert coaching.",
     url: "https://yourdomain.com/contact", // 🔁 replace later
-    siteName: "Ant Learning Hub",
+    siteName: "ANT Learning Hub",
     type: "website",
   },
 };

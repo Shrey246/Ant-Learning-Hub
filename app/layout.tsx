@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ant Learning Hub",
+  title: "ANT Learning Hub",
   description: "Leadership and coaching experiences designed for growth.",
   icons: {
     icon: "/favicon.ico",

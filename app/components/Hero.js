@@ -21,7 +21,7 @@ const trustSignals = [
 
 const stats = [
   { value: "24+", label: "Years guiding growth" },
-  { value: "3X", label: "Sharper leadership outcomes" },
+  { value: "10X", label: "Sharper leadership outcomes" },
   { value: "360°", label: "Personal + team transformation" },
 ];
 
@@ -30,27 +30,29 @@ const orbitCards = [
     title: "Strategic Leadership",
     text: "Navigate complexity and drive visionary change.",
     icon: Target,
-    position: "left-[-20px] top-[-24px] sm:left-0 sm:top-6 lg:-left-28 lg:top-2",
+    position: "top-[0%] left-[10%] -translate-x-1/2 -translate-y-1/2",
   },
   {
     title: "Behavioral Mastery",
     text: "Develop emotional intelligence and adaptive habits.",
     icon: Users,
-    position: "right-[-20px] top-[-24px] sm:right-0 sm:top-4 lg:-right-10 lg:top-10",
+    position: "top-[9%] right-[10%] translate-x-1/2 -translate-y-1/2",
   },
   {
     title: "Org Development",
     text: "Align teams, optimize systems, and scale impact.",
     icon: TrendingUp,
-    position: "bottom-[-28px] left-[-20px] sm:bottom-10 sm:left-4 lg:-bottom-12 lg:-left-12",
+    position: "bottom-[0%] left-[10%] -translate-x-1/2 translate-y-1/2",
   },
   {
     title: "High Performance",
     text: "Sustain excellence through resilience and focus.",
     icon: ShieldCheck,
-    position: "bottom-[-28px] right-[-20px] sm:bottom-10 sm:right-4 lg:-bottom-12 lg:-right-8",
+    position: "bottom-[3%] right-[15%] translate-x-1/2 translate-y-1/2",
   },
 ];
+
+
 
 const corePillars = [
   { label: "Lead with purpose", icon: Target },
@@ -80,15 +82,40 @@ export default function Hero() {
         {/* LEFT CONTENT */}
         <div className="flex flex-col justify-center text-center lg:text-left">
 
-          {/* Eyebrow badge */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
+
+          {/* Subheading / meta description mirror */}
+                  <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex mx-auto lg:mx-0 w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.3em] text-teal-400 backdrop-blur-md"
-          >
-            <Sparkles size={14} aria-hidden="true" />
-            <span>Leadership coaching for your next level</span>
-          </motion.p>
+            transition={{ delay: 0.2 }}
+            className="relative mt-4 flex items-center justify-center lg:justify-start gap-2 text-sm sm:text-base md:text-lg font-Large tracking-[0.3em] text-teal-400">
+            <span className="relative text-teal-400 font-semibold">
+              <b>A</b>spire
+              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+            </span>
+
+            <motion.span
+              className="h-[2px] w-6 sm:w-10 bg-gradient-to-r from-gray-500 to-teal-400"
+              animate={{ width: ["20px", "40px", "20px"] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+
+            <span className="relative text-teal-400 font-semibold">
+              <b>N</b>urture
+              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+            </span>
+
+            <motion.span
+              className="h-[2px] w-6 sm:w-10 bg-gradient-to-r from-teal-400 to-orange-400"
+              animate={{ width: ["20px", "40px", "20px"] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            />
+
+            <span className="relative text-teal-400 font-semibold">
+              <b>T</b>ransform
+              <span className="absolute inset-0 blur-md bg-teal-400/20 opacity-50"></span>
+            </span>
+          </motion.div>
 
           {/* Primary heading — critical for SEO */}
           <motion.h1
@@ -104,15 +131,6 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Subheading / meta description mirror */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-2 mx-auto lg:mx-0 max-w-lg lg:max-w-xl text-base sm:text-lg text-gray-400 font-light leading-relaxed"
-          >
-          If you Aspire to be a better version of yourself we with Nurture you through our programs and you will be Transformed to the best version of yourself.
-          </motion.p>
 
           {/* CTA buttons */}
           <motion.div

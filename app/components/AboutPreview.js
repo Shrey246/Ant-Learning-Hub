@@ -66,8 +66,8 @@ export default function AboutPreview() {
 
           <div className="mt-4 md:mt-5 space-y-3 md:space-y-4">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              Praveen John Purushotham is an ICF and NLP certified coach who believes that meaningful growth begins
-              with awareness and is sustained through conscious action.
+              Praveen John Purushotham, an ICF and NLP-certified coach, believes that true personal and professional growth begins with the right Mindset to Aspire. Through his Trainings Programs and coaching, 
+              he helps individuals Nurture their journey by equipping them with the right Toolset, and guiding them in building a strong Skillset — empowering them to Transform to their highest Potential.
             </p>
 
             <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">

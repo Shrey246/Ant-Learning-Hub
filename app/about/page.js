@@ -19,7 +19,7 @@ export const metadata = {
     description:
       "24+ years of leadership and behavioural coaching experience. Helping individuals and organizations achieve clarity and growth.",
     url: "https://yourdomain.com/about", // 🔁 replace later with real domain
-    siteName: "Ant Learning Hub",
+    siteName: "ANT Learning Hub",
     images: [
       {
         url: "/coach.png",

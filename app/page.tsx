@@ -26,7 +26,7 @@ export const metadata = {
     description:
       "Expert coaching for individuals, corporates, and institutions. Build clarity, confidence, and high-performance habits.",
     url: "https://yourdomain.com", // 🔁 replace later
-    siteName: "Ant Learning Hub",
+    siteName: "ANT Learning Hub",
     type: "website",
   },
 };

@@ -22,7 +22,7 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-white">
-              Ant Learning Hub
+              ANT Learning Hub
             </h2>
 
             <p className="mt-3 text-gray-400 max-w-sm leading-relaxed font-light">
@@ -91,7 +91,7 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         <div className="mt-10 border-t border-white/10 pt-5 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Ant Learning Hub. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ANT Learning Hub. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

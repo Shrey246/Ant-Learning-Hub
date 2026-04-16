@@ -18,7 +18,7 @@ export const metadata = {
     description:
       "Structured coaching programs for individuals, corporates, and institutions to achieve real transformation.",
     url: "https://yourdomain.com/programs", // 🔁 replace later
-    siteName: "Ant Learning Hub",
+    siteName: "ANT Learning Hub",
     type: "website",
   },
 };

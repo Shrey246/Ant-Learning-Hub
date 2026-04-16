@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
-  { href: "/Contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -175,14 +175,14 @@ export default function Navbar() {
 
             <Image
               src="/logo.svg"
-              alt="Ant Learning Hub Logo"
+              alt="ANT Learning Hub Logo"
               width={42}
               height={42}
               className="relative z-10"
             />
           </div>
           <span className="text-sm font-bold tracking-tight sm:text-lg bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-            Ant Learning Hub
+            ANT Learning Hub
           </span>
         </Link>
 

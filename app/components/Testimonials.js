@@ -10,7 +10,7 @@ export default function Testimonials() {
     { name: "Karan Patel", role: "Young Professional", text: "The sessions helped me develop emotional awareness and improve my professional relationships." },
     { name: "Neha Kapoor", role: "HR Professional", text: "The coaching sessions helped me lead my team with empathy and strategic clarity." },
     { name: "Arjun Nair", role: "Startup Founder", text: "Working with Praveen gave me a completely new perspective on leadership and personal growth." },
-    { name: "Sneha Iyer", role: "Student", text: "His guidance helped me build confidence and focus on my career goals with clarity." },
+    { name: "Sneha Naidu", role: "Student", text: "His guidance helped me build confidence and focus on my career goals with clarity." },
   ];
 
   const duplicatedTestimonials = [...testimonials, ...testimonials];

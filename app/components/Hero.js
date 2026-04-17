@@ -61,28 +61,28 @@ const orbitCardsMobile = [
     title: "Strategic Leadership",
     text: "Navigate complexity and drive visionary change.",
     icon: Target,
-    orbitX: "calc(-1.8 * var(--orbit-offset))", // ⬅️ pushed more left
+    orbitX: "calc(-1.73 * var(--orbit-offset))", // ⬅️ pushed more left
     orbitY: "calc(-1.5 * var(--orbit-offset))",
   },
   {
     title: "Behavioral Mastery",
     text: "Develop emotional intelligence and adaptive habits.",
     icon: Users,
-    orbitX: "calc(1.8 * var(--orbit-offset))", // ➡️ pushed more right
+    orbitX: "calc(1.73 * var(--orbit-offset))", // ➡️ pushed more right
     orbitY: "calc(-1.5 * var(--orbit-offset))",
   },
   {
     title: "Org Development",
     text: "Align teams, optimize systems, and scale impact.",
     icon: TrendingUp,
-    orbitX: "calc(-1.8 * var(--orbit-offset))", // ⬅️ more left
+    orbitX: "calc(-1.73 * var(--orbit-offset))", // ⬅️ more left
     orbitY: "calc(1.5 * var(--orbit-offset))",
   },
   {
     title: "High Performance",
     text: "Sustain excellence through resilience and focus.",
     icon: ShieldCheck,
-    orbitX: "calc(1.8 * var(--orbit-offset))", // ➡️ more right
+    orbitX: "calc(1.73 * var(--orbit-offset))", // ➡️ more right
     orbitY: "calc(1.5 * var(--orbit-offset))",
   },
 ];

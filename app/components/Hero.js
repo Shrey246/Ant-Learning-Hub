@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -24,7 +25,7 @@ const stats = [
   { value: "360°", label: "Personal + team transformation" },
 ];
 
-const orbitCards = [
+const orbitCardsDesktop = [
   {
     title: "Strategic Leadership",
     text: "Navigate complexity and drive visionary change.",
@@ -55,6 +56,37 @@ const orbitCards = [
   },
 ];
 
+const orbitCardsMobile = [
+  {
+    title: "Strategic Leadership",
+    text: "Navigate complexity and drive visionary change.",
+    icon: Target,
+    orbitX: "calc(-1.8 * var(--orbit-offset))", // ⬅️ pushed more left
+    orbitY: "calc(-1.5 * var(--orbit-offset))",
+  },
+  {
+    title: "Behavioral Mastery",
+    text: "Develop emotional intelligence and adaptive habits.",
+    icon: Users,
+    orbitX: "calc(1.8 * var(--orbit-offset))", // ➡️ pushed more right
+    orbitY: "calc(-1.5 * var(--orbit-offset))",
+  },
+  {
+    title: "Org Development",
+    text: "Align teams, optimize systems, and scale impact.",
+    icon: TrendingUp,
+    orbitX: "calc(-1.8 * var(--orbit-offset))", // ⬅️ more left
+    orbitY: "calc(1.5 * var(--orbit-offset))",
+  },
+  {
+    title: "High Performance",
+    text: "Sustain excellence through resilience and focus.",
+    icon: ShieldCheck,
+    orbitX: "calc(1.8 * var(--orbit-offset))", // ➡️ more right
+    orbitY: "calc(1.5 * var(--orbit-offset))",
+  },
+];
+
 
 
 const corePillars = [
@@ -64,6 +96,29 @@ const corePillars = [
 ];
 
 export default function Hero() {
+  const [isDesktopOrbit, setIsDesktopOrbit] = useState(() =>
+    typeof window === "undefined" ? true : window.innerWidth >= 640
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 640px)");
+    const updateOrbitMode = (event) => {
+      setIsDesktopOrbit(event.matches);
+    };
+
+    setIsDesktopOrbit(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updateOrbitMode);
+      return () => mediaQuery.removeEventListener("change", updateOrbitMode);
+    }
+
+    mediaQuery.addListener(updateOrbitMode);
+    return () => mediaQuery.removeListener(updateOrbitMode);
+  }, []);
+
+  const activeOrbitCards = isDesktopOrbit ? orbitCardsDesktop : orbitCardsMobile;
+
   return (
     <section
       aria-label="Leadership coaching — lead with clarity, inspire with presence"
@@ -181,8 +236,7 @@ export default function Hero() {
   className="relative mt-10 flex w-full items-center justify-center px-2 sm:px-0 lg:mt-0"
 >
   <div
-    className="relative aspect-square w-full max-w-[26rem] sm:max-w-[34rem] lg:max-w-[42rem]"
-    style={{ "--orbit-offset": "clamp(8.5rem, 24vw, 12rem)" }}
+    className="relative aspect-square w-full max-w-[22rem] [--orbit-offset:clamp(5.25rem,17vw,6.5rem)] sm:max-w-[34rem] sm:[--orbit-offset:clamp(8.5rem,24vw,12rem)] lg:max-w-[42rem]"
   >
     <motion.div
       aria-hidden="true"
@@ -191,7 +245,7 @@ export default function Hero() {
       transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
     />
 
-    {orbitCards.map((card, index) => {
+    {activeOrbitCards.map((card, index) => {
       const Icon = card.icon;
       return (
         <div
@@ -205,26 +259,26 @@ export default function Hero() {
         >
           <motion.article
             aria-label={`${card.title}: ${card.text}`}
-            className="w-[8.25rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[9rem] lg:w-[9.75rem]"
+            className="w-[6.4rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[9rem] lg:w-[9.75rem]"
             animate={{ y: [0, index % 2 === 0 ? -4 : 4, 0], x: [0, index % 2 === 0 ? 2 : -2, 0] }}
             transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
           >
-            <div className="p-3 sm:p-3.5">
-              <div className="flex flex-col gap-2.5">
+            <div className="p-2 sm:p-3.5">
+              <div className="flex flex-col gap-1.5 sm:gap-2.5">
                 <div
                   className="shrink-0 self-start rounded-xl bg-teal-500/10 text-teal-400 ring-1 ring-teal-500/20"
                   style={{ display: "inline-flex" }}
                   aria-hidden="true"
                 >
-                  <span className="inline-flex rounded-xl p-2 sm:p-2.5">
+                  <span className="inline-flex rounded-xl p-1.5 sm:p-2.5">
                     <Icon className="h-4 w-4 sm:h-[1.05rem] sm:w-[1.05rem]" />
                   </span>
                 </div>
                 <div>
-                  <p className="text-sm font-bold leading-tight text-white sm:text-[0.95rem]">
+                  <p className="text-[0.72rem] font-bold leading-tight text-white sm:text-[0.95rem]">
                     {card.title}
                   </p>
-                  <p className="mt-1.5 text-[0.72rem] leading-snug text-gray-400 sm:text-xs">
+                  <p className="mt-1 text-[0.62rem] leading-snug text-gray-400 sm:mt-1.5 sm:text-xs">
                     {card.text}
                   </p>
                 </div>
@@ -238,7 +292,7 @@ export default function Hero() {
 {/* CENTRAL CARD */}
 <div className="absolute inset-0 flex items-center justify-center">
   <motion.div
-    className="relative z-20 flex w-[min(15rem,52vw)] flex-col overflow-hidden rounded-[1.5rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-4 shadow-3xl backdrop-blur-3xl sm:w-[min(16.5rem,46vw)] sm:p-5 lg:w-[min(19rem,42vw)]"
+    className="relative z-20 flex w-[min(12.75rem,48vw)] flex-col overflow-hidden rounded-[1.5rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-3 shadow-3xl backdrop-blur-3xl sm:w-[min(16.5rem,46vw)] sm:p-5 lg:w-[min(19rem,42vw)]"
     animate={{ y: [0, -8, 0] }}
     transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
   >
@@ -249,35 +303,35 @@ export default function Hero() {
     />
 
     {/* tag */}
-    <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 uppercase tracking-[0.15em] text-teal-400 text-[10px] sm:text-xs px-3 py-1">
+    <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.15em] text-teal-400 sm:px-3 sm:text-xs">
       Leadership
     </p>
 
     {/* heading */}
-    <h2 className="mt-3 text-base font-bold leading-[1.2] tracking-tight sm:text-lg">
+    <h2 className="mt-2.5 text-[0.92rem] font-bold leading-[1.2] tracking-tight sm:mt-3 sm:text-lg">
       Presence that <br /> moves people.
     </h2>
 
     {/* subtext */}
-    <p className="mt-2 text-xs font-light text-gray-400 sm:text-sm">
+    <p className="mt-1.5 text-[0.68rem] font-light text-gray-400 sm:mt-2 sm:text-sm">
       Premium coaching.
     </p>
 
     {/* LIST */}
-    <ul className="mt-4 space-y-2.5">
+    <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
       {corePillars.map((item, i) => {
         const PIcon = item.icon;
         return (
           <li
             key={i}
-            className="flex items-center gap-2.5 rounded-lg border border-white/5 bg-white/[0.04] px-3 py-2"
+            className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.04] px-2.5 py-1.5 sm:gap-2.5 sm:px-3 sm:py-2"
           >
             <div className="shrink-0 rounded-md bg-teal-500/10 text-teal-400 p-1.5">
               <PIcon size={14} />
             </div>
 
             {/* ✅ IMPORTANT FIX */}
-            <span className="text-xs sm:text-sm text-gray-200 leading-snug">
+            <span className="text-[0.7rem] sm:text-sm text-gray-200 leading-snug">
               {item.label}
             </span>
           </li>

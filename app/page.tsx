@@ -1,11 +1,13 @@
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
 import AboutPreview from "./components/AboutPreview";
 import Philosophy from "./components/Philosophy";
 import Audience from "./components/Audience";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+
+import HeroWrapper from "./components/HeroWrapper";
 
 /* ================= SEO METADATA ================= */
 export const metadata = {
@@ -37,7 +39,7 @@ export default function Home() {
       <Navbar />
       
       <main className="bg-[#030812]">
-        <Hero />
+        <HeroWrapper />
         <AboutPreview />
         <Philosophy />
         <Audience />

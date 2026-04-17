@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Play,
   ShieldCheck,
-  Sparkles,
   Target,
   TrendingUp,
   Users,
@@ -30,25 +29,29 @@ const orbitCards = [
     title: "Strategic Leadership",
     text: "Navigate complexity and drive visionary change.",
     icon: Target,
-    position: "top-[0%] left-[10%] -translate-x-1/2 -translate-y-1/2",
+    orbitX: "calc(-1.22 * var(--orbit-offset))",
+    orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Behavioral Mastery",
     text: "Develop emotional intelligence and adaptive habits.",
     icon: Users,
-    position: "top-[9%] right-[10%] translate-x-1/2 -translate-y-1/2",
+    orbitX: "var(--orbit-offset)",
+    orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Org Development",
     text: "Align teams, optimize systems, and scale impact.",
     icon: TrendingUp,
-    position: "bottom-[0%] left-[10%] -translate-x-1/2 translate-y-1/2",
+    orbitX: "calc(-1.2 * var(--orbit-offset))",
+    orbitY: "var(--orbit-offset)",
   },
   {
     title: "High Performance",
     text: "Sustain excellence through resilience and focus.",
     icon: ShieldCheck,
-    position: "bottom-[3%] right-[15%] translate-x-1/2 translate-y-1/2",
+    orbitX: "calc(1.25 * var(--orbit-offset))",
+    orbitY: "var(--orbit-offset)",
   },
 ];
 
@@ -132,7 +135,7 @@ export default function Hero() {
             <Link
               href="/programs"
               aria-label="Explore leadership coaching programs"
-              className="group flex items-center justify-center gap-2 rounded-full bg-white text-black px-10 py-4 font-bold transition-all hover:scale-105 shadow-xl w-full sm:w-auto"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-white px-10 py-4 font-bold text-black shadow-xl transition-all hover:-translate-y-0.5 sm:w-auto"
             >
               Explore Programs
               <ArrowRight size={18} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
@@ -172,96 +175,120 @@ export default function Hero() {
         </div>
 
         {/* RIGHT COLUMN: ORBIT VISUAL — labelled as decorative illustration */}
+<div
+  role="img"
+  aria-label="Visual overview of coaching pillars: Strategic Leadership, Behavioral Mastery, Org Development, and High Performance"
+  className="relative mt-10 flex w-full items-center justify-center px-2 sm:px-0 lg:mt-0"
+>
+  <div
+    className="relative aspect-square w-full max-w-[26rem] sm:max-w-[34rem] lg:max-w-[42rem]"
+    style={{ "--orbit-offset": "clamp(8.5rem, 24vw, 12rem)" }}
+  >
+    <motion.div
+      aria-hidden="true"
+      className="absolute inset-0 rounded-full border border-white/[0.05]"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+    />
+
+    {orbitCards.map((card, index) => {
+      const Icon = card.icon;
+      return (
         <div
-          role="img"
-          aria-label="Visual overview of coaching pillars: Strategic Leadership, Behavioral Mastery, Org Development, and High Performance"
-          className="relative mt-8 flex w-full items-center justify-center overflow-hidden px-2 sm:px-0 lg:mt-0 lg:overflow-visible"
+          key={index}
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: `translate(calc(-50% + ${card.orbitX}), calc(-50% + ${card.orbitY}))`,
+          }}
+          className="absolute z-30"
         >
-          <div className="relative aspect-square w-full max-w-[300px] origin-center scale-[0.65] sm:max-w-[420px] sm:scale-[0.8] md:max-w-[500px] md:scale-100 lg:max-w-[550px] lg:aspect-square">
-
-            <motion.div
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full border border-white/[0.05]"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            />
-
-            {/* ORBIT CARDS — each is a semantically described article */}
-            {orbitCards.map((card, index) => {
-              const Icon = card.icon;
-              const mobilePosition = card.position
-                .replace("top-[0%]", "top-[2%]")
-                .replace("top-[9%]", "top-[11%]")
-                .replace("bottom-[0%]", "bottom-[2%]")
-                .replace("bottom-[3%]", "bottom-[5%]")
-                .replace("left-[10%]", "left-[14%]")
-                .replace("right-[10%]", "right-[14%]")
-                .replace("right-[15%]", "right-[18%]");
-              const restoredPosition = card.position
-                .split(" ")
-                .map((token) => `sm:${token}`)
-                .join(" ");
-              return (
-                <motion.article
-                  key={index}
-                  aria-label={`${card.title}: ${card.text}`}
-                  className={`absolute z-30 w-[110px] rounded-2xl border border-white/10 bg-[#030812]/95 p-2 backdrop-blur-xl shadow-2xl sm:w-[140px] sm:p-3 md:w-52 md:p-4 lg:absolute lg:w-[150px] lg:max-w-none lg:p-3 xl:w-[170px] 2xl:w-52 ${mobilePosition} ${restoredPosition}`}
-                  animate={{ y: [0, index % 2 === 0 ? -5 : 5, 0], x: [0, index % 2 === 0 ? 3 : -3, 0] }}
-                  transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+          <motion.article
+            aria-label={`${card.title}: ${card.text}`}
+            className="w-[8.25rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[9rem] lg:w-[9.75rem]"
+            animate={{ y: [0, index % 2 === 0 ? -4 : 4, 0], x: [0, index % 2 === 0 ? 2 : -2, 0] }}
+            transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+          >
+            <div className="p-3 sm:p-3.5">
+              <div className="flex flex-col gap-2.5">
+                <div
+                  className="shrink-0 self-start rounded-xl bg-teal-500/10 text-teal-400 ring-1 ring-teal-500/20"
+                  style={{ display: "inline-flex" }}
+                  aria-hidden="true"
                 >
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="rounded-xl bg-teal-500/10 p-1.5 text-teal-400 ring-1 ring-teal-500/20 shrink-0 sm:p-2" aria-hidden="true">
-                      <Icon size={12} className="sm:w-[14px] sm:h-[14px] md:w-[18px] md:h-[18px]" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[10px] font-bold leading-tight text-white sm:text-xs md:text-sm">{card.title}</p>
-                      <p className="mt-1 text-[10px] leading-snug text-gray-400 sm:text-xs md:text-sm">{card.text}</p>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+                  <span className="inline-flex rounded-xl p-2 sm:p-2.5">
+                    <Icon className="h-4 w-4 sm:h-[1.05rem] sm:w-[1.05rem]" />
+                  </span>
+                </div>
+                <div>
+                  <p className="text-sm font-bold leading-tight text-white sm:text-[0.95rem]">
+                    {card.title}
+                  </p>
+                  <p className="mt-1.5 text-[0.72rem] leading-snug text-gray-400 sm:text-xs">
+                    {card.text}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        </div>
+      );
+    })}
 
-            {/* CENTRAL CARD */}
-            <div className="absolute inset-0 flex items-center justify-center lg:absolute lg:inset-0 lg:order-none">
-              <motion.div
-                className="relative flex aspect-[4/5] w-[60%] flex-col justify-center overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-3 shadow-3xl backdrop-blur-3xl sm:w-[70%] sm:p-10 md:w-[52%] md:rounded-[3rem]"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+{/* CENTRAL CARD */}
+<div className="absolute inset-0 flex items-center justify-center">
+  <motion.div
+    className="relative z-20 flex w-[min(15rem,52vw)] flex-col overflow-hidden rounded-[1.5rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-4 shadow-3xl backdrop-blur-3xl sm:w-[min(16.5rem,46vw)] sm:p-5 lg:w-[min(19rem,42vw)]"
+    animate={{ y: [0, -8, 0] }}
+    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+  >
+    {/* top glow line */}
+    <div
+      aria-hidden="true"
+      className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"
+    />
 
-                <p className="inline-flex w-fit rounded-full bg-teal-500/10 px-2 sm:px-3 py-1 text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-teal-400 border border-teal-500/20">
-                  Leadership
-                </p>
+    {/* tag */}
+    <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 uppercase tracking-[0.15em] text-teal-400 text-[10px] sm:text-xs px-3 py-1">
+      Leadership
+    </p>
 
-                <h2 className="mt-2 text-[12px] font-bold leading-tight tracking-tight sm:mt-4 sm:text-2xl md:text-4xl">
-                  Presence that <br /> moves people.
-                </h2>
+    {/* heading */}
+    <h2 className="mt-3 text-base font-bold leading-[1.2] tracking-tight sm:text-lg">
+      Presence that <br /> moves people.
+    </h2>
 
-                <p className="mt-1 text-[9px] font-light leading-relaxed text-gray-400 sm:mt-2 sm:text-sm">
-                  Premium coaching.
-                </p>
+    {/* subtext */}
+    <p className="mt-2 text-xs font-light text-gray-400 sm:text-sm">
+      Premium coaching.
+    </p>
 
-                {/* CORE PILLARS — semantic list */}
-                <ul aria-label="Core coaching pillars" className="mt-2 space-y-1.5 list-none p-0 sm:space-y-4 md:mt-4">
-                  {corePillars.map((item, i) => {
-                    const PIcon = item.icon;
-                    return (
-                      <li key={i} className="flex items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.03] p-1.5 sm:rounded-xl sm:p-3">
-                        <div aria-hidden="true" className="p-1 rounded-md bg-teal-500/10 text-teal-400 shrink-0">
-                          <PIcon size={10} className="sm:w-3.5 sm:h-3.5" />
-                        </div>
-                        <span className="truncate text-[7px] font-medium text-gray-200 sm:text-xs">{item.label}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </motion.div>
+    {/* LIST */}
+    <ul className="mt-4 space-y-2.5">
+      {corePillars.map((item, i) => {
+        const PIcon = item.icon;
+        return (
+          <li
+            key={i}
+            className="flex items-center gap-2.5 rounded-lg border border-white/5 bg-white/[0.04] px-3 py-2"
+          >
+            <div className="shrink-0 rounded-md bg-teal-500/10 text-teal-400 p-1.5">
+              <PIcon size={14} />
             </div>
 
-          </div>
-        </div>
+            {/* ✅ IMPORTANT FIX */}
+            <span className="text-xs sm:text-sm text-gray-200 leading-snug">
+              {item.label}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  </motion.div>
+</div>
+  </div>
+</div>
+
       </div>
     </section>
   );

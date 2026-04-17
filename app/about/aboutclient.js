@@ -65,9 +65,21 @@ export default function AboutPage() {
             </h1>
            <div className="mt-2 md:mt-2 space-y-2 md:space-y-2">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
-              Praveen John Purushotham, an ICF and NLP-certified coach, believes that true personal and professional growth begins with the right Mindset to Aspire. Through his Trainings Programs and coaching, 
-              he helps individuals Nurture their journey by equipping them with the right Toolset, and guiding them in building a strong Skillset — empowering them to Transform to their highest Potential.
-            </p>
+  Praveen John Purushotham, an ICF and NLP-certified coach, believes that true personal and professional growth begins with the right{" "}
+  
+  <span className="font-semibold text-white">Mindset</span> to{" "}
+  <span className="font-semibold text-teal-400">Aspire</span>. 
+  
+  Through his Training Programs and coaching, he helps individuals{" "}
+  
+  <span className="font-semibold text-teal-400">Nurture</span> their journey by equipping them with the right{" "}
+  
+  <span className="font-semibold text-white">Toolset</span>, and guiding them in building a strong{" "}
+  
+  <span className="font-semibold text-white">Skillset</span> — empowering them to{" "}
+  
+  <span className="font-semibold text-teal-400">Transform</span> to their highest Potential.
+</p>
 
             <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-lg mx-auto md:mx-0">
               A seasoned professional with 24 years of industry experience, including 16 years dedicated to

@@ -182,7 +182,7 @@ export default function Programs() {
     <>
       <Navbar />
 
-      <main className="relative min-h-screen overflow-hidden bg-[#030812] text-white pt-12 md:pt-28">
+      <main className="relative min-h-screen overflow-hidden bg-[#030812] text-white pt-24 md:pt-28">
         
         {/* --- THE ENHANCED TOP-DOWN ATMOSPHERE --- */}
         <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">

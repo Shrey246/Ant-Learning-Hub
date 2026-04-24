@@ -63,8 +63,8 @@ const programGroups = [
       "Change management support",
       "Stress management for high-pressure roles",
       "Organisational culture & performance alignment",
-      "Leadership through SCUBA - Signature Program",
       "Train the trainer",
+      "Leadership through SCUBA - Signature Program",
     ],
   },
   {

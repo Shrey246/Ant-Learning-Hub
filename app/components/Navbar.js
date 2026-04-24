@@ -169,21 +169,18 @@ export default function Navbar() {
         }`}
       >
         {/* LOGO SECTION */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative flex items-center justify-center transition-transform group-hover:scale-110">
-            <div className="absolute inset-0 rounded-full bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="relative flex items-center justify-center transition-transform group-hover:scale-105">
+            <div className="absolute inset-0 rounded-lg bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
 
             <Image
-              src="/logo.svg"
+              src="/public/logo2.svg"
               alt="ANT Learning Hub Logo"
-              width={42}
-              height={42}
-              className="relative z-10"
+              width={140}
+              height={44}
+              className="relative z-10 object-contain h-11 w-auto"
             />
           </div>
-          <span className="text-sm font-bold tracking-tight sm:text-lg bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-            ANT Learning Hub
-          </span>
         </Link>
 
         {/* DESKTOP NAV - With Framer Motion Pill */}

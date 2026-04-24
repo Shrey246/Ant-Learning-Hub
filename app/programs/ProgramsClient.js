@@ -41,6 +41,7 @@ const programGroups = [
       "Emotional regulation & self-awareness",
       "Life transitions (career or personal)",
       "Holistic wellness & balance",
+      "Train the trainer",
     ],
   },
   {
@@ -63,6 +64,7 @@ const programGroups = [
       "Stress management for high-pressure roles",
       "Organisational culture & performance alignment",
       "Leadership through SCUBA - Signature Program",
+      "Train the trainer",
     ],
   },
   {
@@ -83,6 +85,7 @@ const programGroups = [
       "Habit building, focus, and discipline workshops",
       "Personal growth bootcamps for students",
       "Emergency First Response (EFR) training",
+      "Teachers Self-awareness and Emotional Intelligence",
     ],
   },
 ];

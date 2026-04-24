@@ -16,7 +16,7 @@ import {
 const trustSignals = [
   "Leadership clarity for professionals",
   "Mindset + Toolset = Skillset",
-  "Coaching for teams, founders, and students",
+  "Coaching for Leaders, individuals and Institutions",
 ];
 
 const stats = [
@@ -121,7 +121,7 @@ export default function Hero() {
 
   return (
     <section
-      aria-label="Leadership coaching — lead with clarity, inspire with presence"
+      aria-label="Leadership coaching — lead with clarity, inspire with purpose"
       className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#030812] pt-20 pb-10 text-white md:pt-32 lg:pt-28 lg:pb-0"
     >
       {/* BACKGROUND ELEMENTS — decorative, hidden from assistive tech */}
@@ -175,7 +175,7 @@ export default function Hero() {
             Lead with clarity.{" "}
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
-              Inspire with presence.
+              Inspire with purpose.
             </span>
           </motion.h1>
 
@@ -309,7 +309,7 @@ export default function Hero() {
 
     {/* heading */}
     <h2 className="mt-2.5 text-[0.92rem] font-bold leading-[1.2] tracking-tight sm:mt-3 sm:text-lg">
-      Presence that <br /> moves people.
+      Purpose that <br /> moves people.
     </h2>
 
     {/* subtext */}

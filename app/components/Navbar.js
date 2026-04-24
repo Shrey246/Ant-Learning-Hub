@@ -181,6 +181,9 @@ export default function Navbar() {
               className="relative z-10 object-contain h-11 w-auto"
             />
           </div>
+          <span className="text-sm font-bold tracking-tight sm:text-lg bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            ANT Learning Hub
+          </span>
         </Link>
 
         {/* DESKTOP NAV - With Framer Motion Pill */}

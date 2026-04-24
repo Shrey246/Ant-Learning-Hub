@@ -97,7 +97,7 @@ const handleSubmit = async (e) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { title: "Email", value: "coachpraveenjp@gmail.com", icon: <Mail size={18} /> },
-              { title: "Phone", value: "+91 98451 21178", icon: <Phone size={18} /> },
+              { title: "Phone", value: "+91 9110661178", icon: <Phone size={18} /> },
               { title: "Location", value: "Bengaluru, India", icon: <MapPin size={18} /> },
             ].map((item, i) => (
               <motion.div

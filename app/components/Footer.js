@@ -72,7 +72,7 @@ export default function Footer() {
                 coachpraveenjp@gmail.com
               </p>
               <p className="hover:text-white transition-colors duration-300 cursor-default">
-                +91 98451 21178
+                +91 9110661178
               </p>
             </div>
 

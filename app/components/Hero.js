@@ -135,14 +135,14 @@ export default function Hero() {
         transition={{ duration: 15, repeat: Infinity }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl items-center px-4 sm:px-6 md:px-20 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 xl:gap-20">
+      <div className="relative z-10 mx-auto max-w-7xl items-center px-4 sm:px-6 md:px-16 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:px-8 xl:gap-20">
 
         {/* LEFT CONTENT */}
-        <div className="flex flex-col justify-center text-center lg:text-left">
+        <div className="flex flex-col justify-center text-center lg:items-start lg:text-left">
 
 
           {/* Subheading / meta description mirror */}
-        <div className="relative mt-4 flex flex-wrap items-center justify-center gap-1.5 text-xs font-Large tracking-[0.18em] text-teal-400 sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start">
+        <div className="relative mt-2 flex flex-wrap items-center justify-center gap-1.5 text-xs font-Large tracking-[0.18em] text-teal-400 sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start">
           
           <span className="relative text-teal-400 font-semibold">
             <b>A</b>spire
@@ -208,7 +208,7 @@ export default function Hero() {
           {/* Trust signals — semantic list */}
           <ul
             aria-label="Why choose this coaching"
-            className="mt-4 flex flex-col items-center space-y-2 list-none p-0 lg:items-start"
+            className="mt-3 flex flex-col items-center space-y-1.5 list-none p-0 lg:items-start"
           >
             {trustSignals.map((signal, i) => (
               <li key={i} className="flex items-center gap-3 text-[11px] sm:text-sm text-gray-400 text-left w-full max-w-md lg:max-w-none">
@@ -219,7 +219,7 @@ export default function Hero() {
           </ul>
 
           {/* Stats — semantic description list */}
-          <dl className="mx-auto mt-4 grid max-w-lg grid-cols-1 gap-3 sm:grid-cols-3 lg:mx-0 lg:max-w-none">
+          <dl className="mx-auto mt-3 grid max-w-lg grid-cols-1 gap-2.5 sm:grid-cols-3 lg:mx-0 lg:max-w-none">
             {stats.map((item, i) => (
               <div key={i} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 text-center lg:text-left">
                 <dt className="text-[10px] text-gray-500 uppercase tracking-widest mt-1 order-2">{item.label}</dt>
@@ -233,10 +233,10 @@ export default function Hero() {
 <div
   role="img"
   aria-label="Visual overview of coaching pillars: Strategic Leadership, Behavioral Mastery, Org Development, and High Performance"
-  className="relative mt-10 flex w-full items-center justify-center px-2 sm:px-0 lg:mt-0"
+  className="relative mt-8 flex w-full items-center justify-center px-2 sm:px-0 lg:mt-0"
 >
   <div
-    className="relative aspect-square w-full max-w-[22rem] [--orbit-offset:clamp(5.25rem,17vw,6.5rem)] sm:max-w-[34rem] sm:[--orbit-offset:clamp(8.5rem,24vw,12rem)] lg:max-w-[42rem]"
+    className="relative aspect-square w-full max-w-[20rem] [--orbit-offset:clamp(3.75rem,13vw,4.75rem)] sm:max-w-[28rem] sm:[--orbit-offset:clamp(6.75rem,19vw,9.5rem)] lg:max-w-[34rem]"
   >
     <motion.div
       aria-hidden="true"
@@ -259,26 +259,26 @@ export default function Hero() {
         >
           <motion.article
             aria-label={`${card.title}: ${card.text}`}
-            className="w-[6.4rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[9rem] lg:w-[9.75rem]"
+            className="w-[5.5rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[7.5rem] lg:w-[8.5rem]"
             animate={{ y: [0, index % 2 === 0 ? -4 : 4, 0], x: [0, index % 2 === 0 ? 2 : -2, 0] }}
             transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
           >
-            <div className="p-2 sm:p-3.5">
-              <div className="flex flex-col gap-1.5 sm:gap-2.5">
+            <div className="p-1.5 sm:p-3">
+              <div className="flex flex-col gap-1 sm:gap-2">
                 <div
                   className="shrink-0 self-start rounded-xl bg-teal-500/10 text-teal-400 ring-1 ring-teal-500/20"
                   style={{ display: "inline-flex" }}
                   aria-hidden="true"
                 >
-                  <span className="inline-flex rounded-xl p-1.5 sm:p-2.5">
-                    <Icon className="h-4 w-4 sm:h-[1.05rem] sm:w-[1.05rem]" />
+                  <span className="inline-flex rounded-xl p-1 sm:p-2">
+                    <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </span>
                 </div>
                 <div>
-                  <p className="text-[0.72rem] font-bold leading-tight text-white sm:text-[0.95rem]">
+                  <p className="text-[0.66rem] font-bold leading-tight text-white sm:text-[0.82rem] lg:text-[0.88rem]">
                     {card.title}
                   </p>
-                  <p className="mt-1 text-[0.62rem] leading-snug text-gray-400 sm:mt-1.5 sm:text-xs">
+                  <p className="mt-0.5 text-[0.56rem] leading-snug text-gray-400 sm:mt-1 sm:text-[0.68rem] lg:text-[0.72rem]">
                     {card.text}
                   </p>
                 </div>
@@ -292,7 +292,7 @@ export default function Hero() {
 {/* CENTRAL CARD */}
 <div className="absolute inset-0 flex items-center justify-center">
   <motion.div
-    className="relative z-20 flex w-[min(12.75rem,48vw)] flex-col overflow-hidden rounded-[1.5rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-3 shadow-3xl backdrop-blur-3xl sm:w-[min(16.5rem,46vw)] sm:p-5 lg:w-[min(19rem,42vw)]"
+    className="relative z-20 flex w-[min(11.25rem,44vw)] flex-col overflow-hidden rounded-[1.25rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-2.5 shadow-3xl backdrop-blur-3xl sm:w-[min(13.75rem,40vw)] sm:p-4 lg:w-[min(15.5rem,34vw)]"
     animate={{ y: [0, -8, 0] }}
     transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
   >
@@ -303,35 +303,35 @@ export default function Hero() {
     />
 
     {/* tag */}
-    <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.15em] text-teal-400 sm:px-3 sm:text-xs">
+    <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-teal-400 sm:px-2.5 sm:py-1 sm:text-[0.68rem]">
       Leadership
     </p>
 
     {/* heading */}
-    <h2 className="mt-2.5 text-[0.92rem] font-bold leading-[1.2] tracking-tight sm:mt-3 sm:text-lg">
+    <h2 className="mt-2 text-[0.82rem] font-bold leading-[1.2] tracking-tight sm:mt-2.5 sm:text-base lg:text-[1.05rem]">
       Purpose that <br /> moves people.
     </h2>
 
     {/* subtext */}
-    <p className="mt-1.5 text-[0.68rem] font-light text-gray-400 sm:mt-2 sm:text-sm">
+    <p className="mt-1 text-[0.62rem] font-light text-gray-400 sm:mt-1.5 sm:text-xs">
       Premium coaching.
     </p>
 
     {/* LIST */}
-    <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
+    <ul className="mt-2.5 space-y-1.5 sm:mt-3 sm:space-y-2">
       {corePillars.map((item, i) => {
         const PIcon = item.icon;
         return (
           <li
             key={i}
-            className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.04] px-2.5 py-1.5 sm:gap-2.5 sm:px-3 sm:py-2"
+            className="flex items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.04] px-2 py-1.5 sm:gap-2 sm:px-2.5 sm:py-1.5"
           >
-            <div className="shrink-0 rounded-md bg-teal-500/10 text-teal-400 p-1.5">
-              <PIcon size={14} />
+            <div className="shrink-0 rounded-md bg-teal-500/10 text-teal-400 p-1 sm:p-1.5">
+              <PIcon size={12} />
             </div>
 
             {/* ✅ IMPORTANT FIX */}
-            <span className="text-[0.7rem] sm:text-sm text-gray-200 leading-snug">
+            <span className="text-[0.66rem] sm:text-xs text-gray-200 leading-snug">
               {item.label}
             </span>
           </li>

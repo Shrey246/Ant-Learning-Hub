@@ -38,16 +38,6 @@ export default function AboutPage() {
                 className="w-full object-cover"
               />
             </div>
-
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-2 md:-right-8 z-20 p-4 rounded-3xl backdrop-blur-2xl border border-white/10 bg-white/[0.05] shadow-2xl"
-            >
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-              <p className="text-4xl font-bold text-teal-300 drop-shadow-md">24+</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/80 font-medium">Years Experience</p>
-            </motion.div>
           </motion.div>
 
           <motion.div

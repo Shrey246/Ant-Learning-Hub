@@ -20,11 +20,6 @@ const trustSignals = [
   "Coaching for Leaders, individuals and Institutions",
 ];
 
-const stats = [
-  { value: "24+", label: "Years guiding growth" },
-  { value: "10X", label: "Sharper leadership outcomes" },
-  { value: "360°", label: "Personal + team transformation" },
-];
 
 const orbitCardsDesktop = [
   {
@@ -219,16 +214,6 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-
-          {/* Stats — semantic description list */}
-          <dl className="mx-auto mt-3 grid max-w-lg grid-cols-1 gap-2.5 sm:grid-cols-3 lg:mx-0 lg:max-w-none">
-            {stats.map((item, i) => (
-              <div key={i} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4 text-center lg:text-left">
-                <dt className="text-[10px] text-gray-500 uppercase tracking-widest mt-1 order-2">{item.label}</dt>
-                <dd className="text-2xl font-bold text-white tracking-tight order-1">{item.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         {/* RIGHT COLUMN: ORBIT VISUAL — labelled as decorative illustration */}

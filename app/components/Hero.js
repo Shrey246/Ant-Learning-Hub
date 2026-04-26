@@ -92,6 +92,9 @@ const corePillars = [
   { label: "⁠Leadership Through Scuba", icon: Anchor },
 ];
 
+// Adjust this number to move only the Aspire / Nurture / Transform strip.
+const aspireStripOffsetY = -30;
+
 export default function Hero() {
   const [isDesktopOrbit, setIsDesktopOrbit] = useState(() =>
     typeof window === "undefined" ? true : window.innerWidth >= 640
@@ -139,7 +142,10 @@ export default function Hero() {
 
 
           {/* Subheading / meta description mirror */}
-        <div className="relative mt-2 flex flex-wrap items-center justify-center gap-1.5 text-xs font-Large tracking-[0.18em] text-teal-400 sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start">
+        <div
+          className="relative flex flex-wrap items-center justify-center gap-1.5 text-xs font-Large tracking-[0.18em] text-teal-400 sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start"
+          style={{ transform: `translateY(${aspireStripOffsetY}px)` }}
+        >
           
           <span className="relative text-teal-400 font-semibold">
             <b>A</b>spire

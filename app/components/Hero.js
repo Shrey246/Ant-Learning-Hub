@@ -95,7 +95,7 @@ const corePillars = [
 // Edit these numbers to move only the Aspire / Nurture / Transform strip.
 // Negative moves up, positive moves down.
 const aspireStripOffsetY = {
-  mobile: 0,
+  mobile: 10,
   desktop: -30,
 };
 

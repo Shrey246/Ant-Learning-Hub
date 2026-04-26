@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  Anchor,
   ArrowRight,
   CheckCircle2,
   Play,
@@ -27,72 +28,73 @@ const stats = [
 
 const orbitCardsDesktop = [
   {
-    title: "Strategic Leadership",
-    text: "Navigate complexity and drive visionary change.",
+    title: "1:1 Coaching",
+    text: "Personalised sessions for clarity, growth, and direction.",
     icon: Target,
-    orbitX: "calc(-1.22 * var(--orbit-offset))",
+    orbitX: "calc(-1.34 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
-    title: "Behavioral Mastery",
-    text: "Develop emotional intelligence and adaptive habits.",
+    title: "Student Development",
+    text: "Build confidence, focus, and life skills early.",
     icon: Users,
-    orbitX: "var(--orbit-offset)",
+    orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
-    title: "Org Development",
-    text: "Align teams, optimize systems, and scale impact.",
+    title: "Teacher Training",
+    text: "Empower educators with modern skills and mindset.",
     icon: TrendingUp,
-    orbitX: "calc(-1.2 * var(--orbit-offset))",
+    orbitX: "calc(-1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
   },
   {
-    title: "High Performance",
-    text: "Sustain excellence through resilience and focus.",
+    title: "Corporate Training",
+    text: "Stronger teams. Better performance.",
     icon: ShieldCheck,
-    orbitX: "calc(1.25 * var(--orbit-offset))",
+    orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
   },
 ];
 
 const orbitCardsMobile = [
   {
-    title: "Strategic Leadership",
-    text: "Navigate complexity and drive visionary change.",
+    title: "1:1 Coaching",
+    text: "Personalised sessions for clarity, growth, and direction.",
     icon: Target,
-    orbitX: "calc(-1.7 * var(--orbit-offset))", // ⬅️ pushed more left
+    orbitX: "calc(-2.22 * var(--orbit-offset))", // ⬅️ pushed more left
     orbitY: "calc(-1.5 * var(--orbit-offset))",
   },
   {
-    title: "Behavioral Mastery",
-    text: "Develop emotional intelligence and adaptive habits.",
+    title: "Student Development",
+    text: "Build confidence, focus, and life skills early.",
     icon: Users,
-    orbitX: "calc(1.7 * var(--orbit-offset))", // ➡️ pushed more right
-    orbitY: "calc(-1.5 * var(--orbit-offset))",
+    orbitX: "calc(2.0 * var(--orbit-offset))", // ➡️ pushed more right
+    orbitY: "calc(-2 * var(--orbit-offset))",
   },
   {
-    title: "Org Development",
-    text: "Align teams, optimize systems, and scale impact.",
+    title: "Teacher Training",
+    text: "Empower educators with modern skills and mindset.",
     icon: TrendingUp,
-    orbitX: "calc(-1.7 * var(--orbit-offset))", // ⬅️ more left
-    orbitY: "calc(1.5 * var(--orbit-offset))",
+    orbitX: "calc(-2.1 * var(--orbit-offset))", // ⬅️ more left
+    orbitY: "calc(2.0 * var(--orbit-offset))",
   },
   {
-    title: "High Performance",
-    text: "Sustain excellence through resilience and focus.",
+    title: "Corporate Training",
+    text: "Stronger teams. Better performance.",
     icon: ShieldCheck,
-    orbitX: "calc(1.7 * var(--orbit-offset))", // ➡️ more right
-    orbitY: "calc(1.5 * var(--orbit-offset))",
+    orbitX: "calc(2.2 * var(--orbit-offset))", // ➡️ more right
+    orbitY: "calc(1 * var(--orbit-offset))",
   },
 ];
 
 
 
 const corePillars = [
-  { label: "Lead with purpose", icon: Target },
-  { label: "Communicate with impact", icon: Users },
-  { label: "Perform under pressure", icon: ShieldCheck },
+  { label: "Lead with clarity", icon: Target },
+  { label: "Communicate better", icon: Users },
+  { label: "Handle pressure", icon: ShieldCheck },
+  { label: "⁠Leadership Through Scuba", icon: Anchor },
 ];
 
 export default function Hero() {
@@ -304,12 +306,12 @@ export default function Hero() {
 
     {/* tag */}
     <p className="inline-flex w-fit rounded-full border border-teal-500/20 bg-teal-500/10 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-teal-400 sm:px-2.5 sm:py-1 sm:text-[0.68rem]">
-      Leadership
+      Leadership programs
     </p>
 
     {/* heading */}
     <h2 className="mt-2 text-[0.82rem] font-bold leading-[1.2] tracking-tight sm:mt-2.5 sm:text-base lg:text-[1.05rem]">
-      Purpose that <br /> moves people.
+      Practical coaching to <br /> lead,communicate and perform.
     </h2>
 
     {/* subtext */}

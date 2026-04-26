@@ -159,7 +159,7 @@ const handleSubmit = async (e) => {
       <div className="flex flex-col">
         {[
           { dot: "#14b8a6", shadow: "rgba(20,184,166,.6)", delay: ".1s",
-            content: <>Over <strong className="text-white font-bold">15 years</strong> of experience in leadership &amp; behavioural training</> },
+            content: <>Over <strong className="text-white font-bold">16 years</strong> of experience in leadership &amp; behavioural training</> },
           { dot: "#818cf8", shadow: "rgba(129,140,248,.6)", delay: ".2s",
             content: (
               <div className="flex flex-col gap-2">

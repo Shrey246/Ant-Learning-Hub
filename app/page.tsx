@@ -36,7 +36,7 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Navbar />
+          <Navbar />
       
       <main className="bg-[#030812]">
         <HeroWrapper />

@@ -174,7 +174,7 @@ export default function Navbar() {
             <div className="absolute inset-0 rounded-lg bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
 
             <Image
-              src="logo2.png"
+              src="/logo2.png"
               alt="ANT Learning Hub Logo"
               width={140}
               height={44}
@@ -214,7 +214,7 @@ export default function Navbar() {
             onClick={() => setShowBooking(true)}
             className="group relative inline-flex items-center gap-2 rounded-xl bg-white text-black px-6 py-2.5 text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
           >
-            Book Session
+            Book a Session
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </button>
         </div>

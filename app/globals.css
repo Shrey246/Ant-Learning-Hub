@@ -177,3 +177,33 @@ html {
     padding: 120px 0;
   }
 }
+
+
+@keyframes flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+.animate-flash {
+  animation: flash 0.8s ease-out;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 2s ease forwards;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+.animate-glowPulse {
+  animation: glowPulse 2s ease-out;
+}

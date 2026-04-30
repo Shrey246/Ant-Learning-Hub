@@ -15,7 +15,10 @@ import {
   Target,
   Zap,
   ShieldCheck,
-  Waves 
+  Waves, 
+  CirclePile,
+  Rotate3D,
+  PersonStanding
 } from "lucide-react";
 
 import { db } from "../lib/firebase";
@@ -97,9 +100,9 @@ const highlights = [
 ];
 
 const principles = [
-  { title: "Clear structure", icon: <Target size={20} aria-hidden="true" />, text: "Every program is shaped with a clear flow." },
-  { title: "Applied transformation", icon: <Zap size={20} aria-hidden="true" />, text: "Built to create practical movement." },
-  { title: "Human-centered coaching", icon: <ShieldCheck size={20} aria-hidden="true" />, text: "Simple, warm, and professional." },
+  { title: "Clear structure", icon: <CirclePile size={20} aria-hidden="true" />, text: "Every program is shaped with a clear flow." },
+  { title: "Applied transformation", icon: <Rotate3D size={20} aria-hidden="true" />, text: "Built to create practical movement." },
+  { title: "Human-centered coaching", icon: <PersonStanding size={20} aria-hidden="true" />, text: "Simple, warm, and professional." },
 ];
 
 export default function Programs() {
@@ -209,7 +212,7 @@ export default function Programs() {
         >
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] md:text-xs uppercase tracking-[0.4em] text-teal-400 backdrop-blur-md">
-              <Sparkles size={14} aria-hidden="true" /> Elite Coaching Tracks
+              <Sparkles size={14} aria-hidden="true" /> If You Want Different Results You Need To Do Things Differently!
             </p>
             <h1
               id="programs-heading"
@@ -354,12 +357,12 @@ export default function Programs() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-heading"
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-50 flex items-start justify-center pt-24 md:pt-28 px-4 pb-6"
           >
             {/* BACKDROP */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              className="absolute inset-0 bg-black/70"
               onClick={closeModal}
             />
 
@@ -368,12 +371,22 @@ export default function Programs() {
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative w-full max-w-lg mx-4 rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-6 shadow-[0_40px_120px_rgba(0,0,0,0.8)] overflow-hidden"
+              className={`
+relative w-full max-w-lg
+max-h-[calc(100vh-7rem)]
+flex flex-col overflow-hidden
+rounded-[2rem]
+border border-white/10
+bg-[#030812]/95
+backdrop-blur-xl
+shadow-[0_40px_120px_rgba(0,0,0,0.8)]
+`}
             >
               {/* GLOW BACKGROUND */}
               <div aria-hidden="true" className="absolute -top-20 -left-20 w-60 h-60 bg-teal-500/20 blur-[120px] rounded-full pointer-events-none" />
               <div aria-hidden="true" className="absolute -bottom-20 -right-20 w-60 h-60 bg-orange-500/10 blur-[120px] rounded-full pointer-events-none" />
 
+              <div className="sticky top-0 z-10 px-6 pt-6 pb-4 bg-[#030812]/95 backdrop-blur-md border-b border-white/10">
               {/* CLOSE BUTTON */}
               <button
                 onClick={closeModal}
@@ -400,9 +413,11 @@ export default function Programs() {
                   Share your details and we'll connect with you shortly.
                 </p>
               </div>
+              </div>
 
               {/* FORM */}
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <div className="flex-1 overflow-y-auto px-6 pt-4 pb-24 modalScroll">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
 
                 {/* NAME */}
                 <div className="relative">
@@ -415,7 +430,15 @@ export default function Programs() {
                     required
                     autoComplete="name"
                     placeholder="Full Name"
-                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                    className={`
+w-full px-5 py-4 rounded-xl
+bg-white/[0.06]
+border border-white/10
+text-white placeholder-gray-500
+focus:outline-none focus:border-teal-400/50
+focus:bg-white/[0.08]
+transition-all
+`}
                   />
                 </div>
 
@@ -431,7 +454,15 @@ export default function Programs() {
                     required
                     autoComplete="email"
                     placeholder="Email Address"
-                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                    className={`
+w-full px-5 py-4 rounded-xl
+bg-white/[0.06]
+border border-white/10
+text-white placeholder-gray-500
+focus:outline-none focus:border-teal-400/50
+focus:bg-white/[0.08]
+transition-all
+`}
                   />
                 </div>
 
@@ -447,7 +478,15 @@ export default function Programs() {
                     type="tel"
                     autoComplete="tel"
                     placeholder="Phone Number"
-                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                    className={`
+w-full px-5 py-4 rounded-xl
+bg-white/[0.06]
+border border-white/10
+text-white placeholder-gray-500
+focus:outline-none focus:border-teal-400/50
+focus:bg-white/[0.08]
+transition-all
+`}
                   />
                 </div>
 
@@ -461,31 +500,52 @@ export default function Programs() {
                     onChange={handleChange}
                     autoComplete="organization-title"
                     placeholder="Profession (optional)"
-                    className="w-full px-5 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400/50 focus:bg-white/[0.08] transition-all"
+                    className={`
+w-full px-5 py-4 rounded-xl
+bg-white/[0.06]
+border border-white/10
+text-white placeholder-gray-500
+focus:outline-none focus:border-teal-400/50
+focus:bg-white/[0.08]
+transition-all
+`}
                   />
                 </div>
 
                 {/* SUBMIT */}
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  type="submit"
-                  aria-label={`Submit enquiry for ${selectedProgram}`}
-                  className="relative w-full mt-4 py-5 rounded-full bg-white text-black font-bold tracking-wide shadow-xl overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Submit Enquiry
-                    <ArrowRight size={18} aria-hidden="true" />
-                  </span>
-
-                  {/* BUTTON GLOW */}
-                  <div aria-hidden="true" className="absolute inset-0 bg-teal-400/0 hover:bg-teal-400/20 transition-all duration-300" />
-                </motion.button>
+                <div className="pt-4">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    type="submit"
+                    aria-label={`Submit enquiry for ${selectedProgram}`}
+                    className="w-full rounded-full bg-white py-5 font-bold text-black hover:bg-teal-400 transition-all"
+                  >
+                    Submit Enquiry →
+                  </motion.button>
+                </div>
 
               </form>
+              </div>
             </motion.div>
           </div>
         )}
+
+        <style jsx global>{`
+          .modalScroll {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(148,163,184,0.3) transparent;
+          }
+
+          .modalScroll::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          .modalScroll::-webkit-scrollbar-thumb {
+            background: rgba(148,163,184,0.3);
+            border-radius: 999px;
+          }
+        `}</style>
 
         <Footer />
 
@@ -505,9 +565,12 @@ export default function Programs() {
               }`}
             >
               {/* glow */}
-              <div aria-hidden="true" className="absolute inset-0 rounded-2xl blur-xl opacity-40 pointer-events-none 
-                ${toast.type === 'success' ? 'bg-teal-500/20' : 'bg-red-500/20'}"
-              />
+                <div
+                  aria-hidden="true"
+                  className={`absolute inset-0 rounded-2xl blur-xl opacity-40 pointer-events-none ${
+                    toast.type === "success" ? "bg-teal-500/20" : "bg-red-500/20"
+                  }`}
+                />
 
               {/* dot */}
               <div

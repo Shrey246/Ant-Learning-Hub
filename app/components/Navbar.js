@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +17,17 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+const logoConfig = {
+  expanded: {
+    size: "h-14 sm:h-16 md:h-16",
+    containerPadding: "py-3 px-4",
+  },
+  collapsed: {
+    size: "h-14",
+    containerPadding: "p-2",
+  }
+};
+
 export default function Navbar() {
   const [toast, setToast] = useState({
     show: false,
@@ -26,6 +38,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [showBooking, setShowBooking] = useState(false);
   const [dateLimits, setDateLimits] = useState({ min: "", max: "" });
 
@@ -108,6 +121,18 @@ export default function Navbar() {
     });
   }, []);
 
+  useEffect(() => {
+    if (showBooking) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showBooking]);
+
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
 
@@ -154,69 +179,117 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 py-4 ${
-        scrolled ? "pt-2" : "pt-6"
-      }`}
-    >
-      <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl px-4 py-2.5 sm:px-6 
-        border transition-all duration-500 ease-in-out
-        ${
-          scrolled
-            ? "bg-[#030812]/80 backdrop-blur-xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-[0.98]"
-            : "bg-transparent border-transparent scale-100"
+    <>
+      <div className={`
+        fixed top-5 left-0 w-full 
+        z-[200]
+        pointer-events-none
+        transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+        ${!scrolled && isHomePage 
+          ? "opacity-100 scale-100" 
+          : "opacity-0 scale-90 pointer-events-none"}
+      `}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex items-start">
+            <div
+              className={`
+                inline-flex items-center justify-center
+                rounded-xl
+                bg-white/[0.03]
+                border border-white/10
+                backdrop-blur-xl
+                shadow-[0_10px_40px_rgba(0,0,0,0.4)]
+                transition-all duration-500
+                pointer-events-none
+                ${logoConfig.expanded.containerPadding}
+              `}
+            >
+              <Image
+                src="/logo6.png"
+                alt="ANT Learning Hub Logo"
+                width={200}
+                height={70}
+                className={`${logoConfig.expanded.size} w-auto object-contain`}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 py-4 ${
+          scrolled ? "pt-2" : isHomePage ? "pt-8" : "pt-6"
         }`}
       >
-        {/* LOGO SECTION */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative flex items-center justify-center transition-transform group-hover:scale-105">
-            <div className="absolute inset-0 rounded-lg bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div
+        className={`mx-auto max-w-7xl grid grid-cols-3 items-center rounded-2xl px-4 py-2.5 sm:px-6 
+        border transition-all duration-500 ease-in-out
+        ${
+          scrolled && !showBooking
+            ? "bg-[#030812]/80 backdrop-blur-xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            : "bg-transparent border-transparent"
+        }`}
+      >
+        <div className="flex items-center">
+          {/* LOGO SECTION */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative flex items-center justify-center transition-transform group-hover:scale-105">
+              <div className="absolute inset-0 rounded-lg bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
 
-            <Image
-              src="/logo2.png"
-              alt="ANT Learning Hub Logo"
-              width={140}
-              height={44}
-              className="relative z-10 object-contain h-11 w-auto"
-            />
-          </div>
-        </Link>
-
-        {/* DESKTOP NAV - With Framer Motion Pill */}
-        <div className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-xl backdrop-blur-md">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative px-5 py-2 text-sm font-medium transition-colors duration-300 ${
-                  isActive ? "text-white" : "text-gray-400 hover:text-white"
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-lg bg-white/10 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className="relative z-10">{link.label}</span>
-              </Link>
-            );
-          })}
+              <Image
+                src="/logo6.png"
+                alt="ANT Learning Hub Logo"
+                width={140}
+                height={44}
+                className={`
+                  relative z-10 object-contain w-auto transition-all duration-500
+                  ${scrolled || !isHomePage 
+                    ? logoConfig.collapsed.size + " opacity-100 scale-100" 
+                    : "h-6 opacity-0 scale-75"}
+                `}
+              />
+            </div>
+          </Link>
         </div>
 
-        {/* CTA BUTTON */}
-        <div className="hidden lg:block">
-          <button
-            onClick={() => setShowBooking(true)}
-            className="group relative inline-flex items-center gap-2 rounded-xl bg-white text-black px-6 py-2.5 text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-          >
-            Book a Session
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </button>
+        <div className="hidden lg:flex justify-center justify-self-center">
+          {/* DESKTOP NAV - With Framer Motion Pill */}
+          <div className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-xl backdrop-blur-md mx-auto">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-5 py-2 text-sm font-medium transition-colors duration-300 ${
+                    isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-lg bg-white/10 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          {/* CTA BUTTON */}
+          <div className="hidden lg:block">
+            <button
+              onClick={() => setShowBooking(true)}
+              className="group relative inline-flex items-center gap-2 rounded-xl bg-white text-black px-6 py-2.5 text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+            >
+              Book a Session
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            </button>
+          </div>
         </div>
 
         {/* MOBILE TOGGLE */}
@@ -266,128 +339,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {showBooking && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center px-4 py-6">
-          {/* BACKDROP */}
-          <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-md"
-            onClick={() => setShowBooking(false)}
-          />
-
-          {/* MODAL */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="relative z-10 flex w-full max-w-xl max-h-[90vh] flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-[#030812] shadow-[0_40px_120px_rgba(0,0,0,0.8)]"
-          >
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#030812]/95 px-6 py-5 backdrop-blur-xl">
-              <h2 className="text-3xl font-bold">Book a Session</h2>
-              <button
-                onClick={() => setShowBooking(false)}
-                className="text-gray-400 transition-colors hover:text-white"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="modalScroll max-h-[90vh] overflow-y-auto px-6 pb-6 pt-5">
-              <form onSubmit={handleBookingSubmit} className="space-y-6">
-                {/* INPUTS */}
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input name="name" value={bookingForm.name} onChange={handleBookingChange} placeholder="Full Name" required className="inputStyle" />
-
-                  <input name="email" value={bookingForm.email} onChange={handleBookingChange} placeholder="Email" required className="inputStyle" />
-
-                  <input name="phone" value={bookingForm.phone} onChange={handleBookingChange} placeholder="Phone" required className="inputStyle" />
-
-                  <input name="profession" value={bookingForm.profession} onChange={handleBookingChange} placeholder="Profession" className="inputStyle" />
-                </div>
-
-                <textarea
-                  name="requirements"
-                  value={bookingForm.requirements}
-                  onChange={handleBookingChange}
-                  placeholder="Any Requirements(Optional)"
-                  className="inputStyle resize-none min-h-[96px]"
-                />
-
-                <div className="space-y-3">
-                  <p className="text-sm font-medium text-gray-300">Booking Type</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    {["Coaching", "Training"].map((type) => (
-                      <button
-                        key={type}
-                        type="button"
-                        onClick={() => selectBookingType(type)}
-                        className={`rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                          bookingForm.bookingType === type
-                            ? "bg-teal-400 text-black border-teal-400 shadow-[0_0_30px_rgba(45,212,191,0.2)]"
-                            : "bg-white/[0.05] border-white/10 text-gray-300 hover:bg-white/[0.08] hover:text-white"
-                        }`}
-                      >
-                        {type}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* DATE */}
-                <div className="space-y-3">
-                  <p className="text-sm text-gray-400">Select Date</p>
-                  <input
-                    type="date"
-                    name="date"
-                    value={bookingForm.date}
-                    onChange={handleBookingChange}
-                    onClick={(e) => e.target.showPicker?.()}
-                    min={dateLimits.min}
-                    max={dateLimits.max}
-                    required
-                    className="dateInputStyle cursor-pointer"
-                  />
-                </div>
-
-                {bookingForm.bookingType === "Coaching" ? (
-                  <>
-                    {/* TIME SLOTS */}
-                    <div>
-                      <p className="mb-3 text-sm text-gray-400">Select Time Slot</p>
-
-                      <div className="grid grid-cols-3 gap-3">
-                        {timeSlots.map((slot, i) => (
-                          <button
-                            key={i}
-                            type="button"
-                            onClick={() => selectTime(slot)}
-                            className={`rounded-xl border py-3 text-sm transition-all duration-300 ${
-                              bookingForm.time === slot
-                                ? "bg-teal-400 text-black border-teal-400 shadow-[0_0_30px_rgba(45,212,191,0.2)]"
-                                : "bg-white/[0.05] border-white/10 text-gray-300 hover:bg-white/[0.1]"
-                            }`}
-                          >
-                            {slot}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-gray-300">
-                    <Check size={16} className="shrink-0 text-teal-300" />
-                    <span>We will reach out within 24 hours to confirm your booking</span>
-                  </div>
-                )}
-
-                {/* SUBMIT */}
-                <button className="w-full rounded-full bg-white py-5 font-bold text-black hover:bg-teal-400">
-                  Confirm Booking
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        </div>
-      )}
-
       <style>{`
       .inputStyle {
         width: 100%;
@@ -428,7 +379,7 @@ export default function Navbar() {
       }
       `}</style>
       {toast.show && (
-        <div className="fixed bottom-6 right-6 z-[300]">
+        <div className="fixed bottom-6 right-6 z-[10000]">
           <div
             className={`relative flex items-center gap-3 rounded-2xl border px-6 py-4 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300
       ${toast.type === "success"
@@ -461,6 +412,135 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+      </nav>
+
+      {showBooking &&
+        typeof window !== "undefined" &&
+        createPortal(
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            {/* BACKDROP */}
+            <div
+              className="absolute inset-0 bg-black/80"
+              onClick={() => setShowBooking(false)}
+            />
+
+            {/* MODAL */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10 flex w-full max-w-xl max-h-[90vh] flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-[#030812] shadow-[0_40px_120px_rgba(0,0,0,0.8)] mx-4"
+            >
+              {/* HEADER */}
+              <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#030812]/95 px-6 py-5">
+                <h2 className="text-3xl font-bold">Book a Session</h2>
+                <button
+                  onClick={() => setShowBooking(false)}
+                  className="text-gray-400 hover:text-white"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* BODY */}
+              <div className="modalScroll max-h-[90vh] overflow-y-auto px-6 pb-6 pt-5">
+                <form onSubmit={handleBookingSubmit} className="space-y-6">
+                  {/* INPUTS */}
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <input name="name" value={bookingForm.name} onChange={handleBookingChange} placeholder="Full Name" required className="inputStyle" />
+
+                    <input name="email" value={bookingForm.email} onChange={handleBookingChange} placeholder="Email" required className="inputStyle" />
+
+                    <input name="phone" value={bookingForm.phone} onChange={handleBookingChange} placeholder="Phone" required className="inputStyle" />
+
+                    <input name="profession" value={bookingForm.profession} onChange={handleBookingChange} placeholder="Profession" className="inputStyle" />
+                  </div>
+
+                  <textarea
+                    name="requirements"
+                    value={bookingForm.requirements}
+                    onChange={handleBookingChange}
+                    placeholder="Any Requirements(Optional)"
+                    className="inputStyle resize-none min-h-[96px]"
+                  />
+
+                  <div className="space-y-3">
+                    <p className="text-sm font-medium text-gray-300">Booking Type</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {["Coaching", "Training"].map((type) => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => selectBookingType(type)}
+                          className={`rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                            bookingForm.bookingType === type
+                              ? "bg-teal-400 text-black border-teal-400 shadow-[0_0_30px_rgba(45,212,191,0.2)]"
+                              : "bg-white/[0.05] border-white/10 text-gray-300 hover:bg-white/[0.08] hover:text-white"
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* DATE */}
+                  <div className="space-y-3">
+                    <p className="text-sm text-gray-400">Select Date</p>
+                    <input
+                      type="date"
+                      name="date"
+                      value={bookingForm.date}
+                      onChange={handleBookingChange}
+                      onClick={(e) => e.target.showPicker?.()}
+                      min={dateLimits.min}
+                      max={dateLimits.max}
+                      required
+                      className="dateInputStyle cursor-pointer"
+                    />
+                  </div>
+
+                  {bookingForm.bookingType === "Coaching" ? (
+                    <>
+                      {/* TIME SLOTS */}
+                      <div>
+                        <p className="mb-3 text-sm text-gray-400">Select Time Slot</p>
+
+                        <div className="grid grid-cols-3 gap-3">
+                          {timeSlots.map((slot, i) => (
+                            <button
+                              key={i}
+                              type="button"
+                              onClick={() => selectTime(slot)}
+                              className={`rounded-xl border py-3 text-sm transition-all duration-300 ${
+                                bookingForm.time === slot
+                                  ? "bg-teal-400 text-black border-teal-400 shadow-[0_0_30px_rgba(45,212,191,0.2)]"
+                                  : "bg-white/[0.05] border-white/10 text-gray-300 hover:bg-white/[0.1]"
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-gray-300">
+                      <Check size={16} className="shrink-0 text-teal-300" />
+                      <span>We will reach out within 24 hours to confirm your booking</span>
+                    </div>
+                  )}
+
+                  {/* SUBMIT */}
+                  <button className="w-full rounded-full bg-white py-5 font-bold text-black hover:bg-teal-400">
+                    Confirm Booking
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>,
+          document.body
+        )}
+    </>
   );
 }

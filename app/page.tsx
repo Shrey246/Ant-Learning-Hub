@@ -6,6 +6,7 @@ import Audience from "./components/Audience";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import RevealGate from "./components/revealcomp/RevealGate";
 
 import HeroWrapper from "./components/HeroWrapper";
 
@@ -36,18 +37,20 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-          <Navbar />
-      
-      <main className="bg-[#030812]">
-        <HeroWrapper />
-        <AboutPreview />
-        <Philosophy />
-        <Audience />
-        <Testimonials />
-        <CTA />
-      </main>
+      <Navbar />
 
-      <Footer />
+      <RevealGate>
+        <main className="bg-[#030812]">
+          <HeroWrapper />
+          <AboutPreview />
+          <Philosophy />
+          <Audience />
+          <Testimonials />
+          <CTA />
+        </main>
+
+        <Footer />
+      </RevealGate>
     </>
   );
 }

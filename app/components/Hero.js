@@ -6,8 +6,14 @@ import { motion } from "framer-motion";
 import {
   Anchor,
   ArrowRight,
+  AudioLines,
   CheckCircle2,
+  Crown,
+  Feather,
+  Gauge,
+  Handshake,
   Play,
+  Podcast,
   ShieldCheck,
   Target,
   TrendingUp,
@@ -24,28 +30,28 @@ const trustSignals = [
 const orbitCardsDesktop = [
   {
     title: "1:1 Coaching",
-    text: "Personalised sessions for clarity, growth, and direction.",
-    icon: Target,
+    text: "Feeling stuck or unclear? Gain direction,confidence and act.",
+    icon: Handshake,
     orbitX: "calc(-1.34 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Student Development",
-    text: "Build confidence, focus, and life skills early.",
+    text: "Struggling with direction or confidence? Gain clarity, discipline and self-belief.",
     icon: Users,
     orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Teacher Training",
-    text: "Empower educators with modern skills and mindset.",
-    icon: TrendingUp,
+    text: "Unable to connect with students or parents? Learn to connect, manage, and inspire better.",
+    icon: Podcast,
     orbitX: "calc(-1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
   },
   {
-    title: "Corporate Training",
-    text: "Stronger teams. Better performance.",
+    title: "Corporate Team Training",
+    text: "Struggling teams? Create trust, ownership, and drive.",
     icon: ShieldCheck,
     orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
@@ -55,28 +61,28 @@ const orbitCardsDesktop = [
 const orbitCardsMobile = [
   {
     title: "1:1 Coaching",
-    text: "Personalised sessions for clarity, growth, and direction.",
-    icon: Target,
+    text: "Feeling stuck or unclear? Gain direction, confidence and act.",
+    icon: Handshake,
     orbitX: "calc(-2.22 * var(--orbit-offset))", // ⬅️ pushed more left
     orbitY: "calc(-1.5 * var(--orbit-offset))",
   },
   {
     title: "Student Development",
-    text: "Build confidence, focus, and life skills early.",
+    text: "Struggling with direction or confidence? Gain clarity, discipline and self-belief.",
     icon: Users,
     orbitX: "calc(2.0 * var(--orbit-offset))", // ➡️ pushed more right
     orbitY: "calc(-2 * var(--orbit-offset))",
   },
   {
     title: "Teacher Training",
-    text: "Empower educators with modern skills and mindset.",
-    icon: TrendingUp,
+    text: "Unable to connect with students or parents? Learn to connect, manage, and inspire better.",
+    icon: Podcast,
     orbitX: "calc(-2.1 * var(--orbit-offset))", // ⬅️ more left
     orbitY: "calc(2.0 * var(--orbit-offset))",
   },
   {
     title: "Corporate Training",
-    text: "Stronger teams. Better performance.",
+    text: "Struggling teams? Create trust, ownership, and drive.",
     icon: ShieldCheck,
     orbitX: "calc(2.2 * var(--orbit-offset))", // ➡️ more right
     orbitY: "calc(1 * var(--orbit-offset))",
@@ -86,17 +92,34 @@ const orbitCardsMobile = [
 
 
 const corePillars = [
-  { label: "Lead with clarity", icon: Target },
-  { label: "Communicate better", icon: Users },
-  { label: "Handle pressure", icon: ShieldCheck },
-  { label: "⁠Leadership Through Scuba", icon: Anchor },
+  { label: "Lack of clarity → Clear direction", icon: Crown },
+  { label: "Poor communication → Strong influence", icon: AudioLines },
+  { label: "Pressure → Composed leadership", icon: Gauge },
+  { label: "⁠Fear of Unknown -> Leadership through SCUBA", icon: Feather }
 ];
 
 // Edit these numbers to move only the Aspire / Nurture / Transform strip.
 // Negative moves up, positive moves down.
 const aspireStripOffsetY = {
-  mobile: 10,
-  desktop: -30,
+  mobile: 45,
+  desktop: 10,
+};
+
+const leftSectionSpacing = {
+  mobileGap: "gap-15",
+  desktopGap: "lg:gap-7",
+  innerGapMobile: "gap-8",
+  innerGapDesktop: "lg:gap-10",
+};
+
+const leftAlignmentControl = {
+  mobile: "items-center text-center",
+  desktop: "lg:items-start lg:text-left",
+};
+
+const leftWidthControl = {
+  mobile: "w-full",
+  desktop: "lg:max-w-l",
 };
 
 export default function Hero() {
@@ -139,15 +162,22 @@ export default function Hero() {
         transition={{ duration: 15, repeat: Infinity }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl items-center px-4 sm:px-6 md:px-16 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:px-8 xl:gap-20">
+      <div className="relative z-10 mx-auto max-w-7xl items-center px-4 sm:px-6 md:px-16 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 xl:gap-20">
 
         {/* LEFT CONTENT */}
-        <div className="flex flex-col justify-center text-center lg:items-start lg:text-left">
+        <div
+          className={`flex flex-col justify-center lg:justify-self-start
+            ${leftAlignmentControl.mobile}
+            ${leftAlignmentControl.desktop}
+            ${leftSectionSpacing.mobileGap}
+            ${leftSectionSpacing.desktopGap}
+          `}
+        >
 
 
           {/* Subheading / meta description mirror */}
         <div
-          className="relative flex flex-wrap items-center justify-center gap-1.5 text-xs font-Large tracking-[0.18em] text-teal-400 translate-y-[var(--aspire-strip-mobile-offset)] sm:translate-y-[var(--aspire-strip-desktop-offset)] sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start"
+          className="relative flex flex-wrap items-center justify-center gap-1.5 text-xs font-'x-large' tracking-[0.18em] text-teal-400 translate-y-[var(--aspire-strip-mobile-offset)] sm:translate-y-[var(--aspire-strip-desktop-offset)] sm:gap-2 sm:text-base sm:tracking-[0.3em] md:text-lg lg:justify-start"
           style={{
             "--aspire-strip-mobile-offset": `${aspireStripOffsetY.mobile}px`,
             "--aspire-strip-desktop-offset": `${aspireStripOffsetY.desktop}px`,
@@ -176,11 +206,20 @@ export default function Hero() {
         </div>
 
           {/* Primary heading — critical for SEO */}
+          <div
+            className={`
+              ${leftWidthControl.mobile}
+              ${leftWidthControl.desktop}
+              flex flex-col
+              ${leftSectionSpacing.innerGapMobile}
+              ${leftSectionSpacing.innerGapDesktop}
+            `}
+          >
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-2 text-3xl font-bold leading-tight tracking-tight sm:text-5xl sm:leading-[1.08] md:text-6xl lg:text-7xl lg:leading-[1.1]"
+            className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl sm:leading-[1.08] md:text-6xl lg:text-7xl lg:leading-[1.1]"
           >
             Lead with clarity.{" "}
             <br className="hidden sm:block" />
@@ -195,7 +234,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-3 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start"
+            className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 lg:gap-5"
           >
             <Link
               href="/programs"
@@ -218,7 +257,7 @@ export default function Hero() {
           {/* Trust signals — semantic list */}
           <ul
             aria-label="Why choose this coaching"
-            className="mt-3 flex flex-col items-center space-y-1.5 list-none p-0 lg:items-start"
+            className="flex flex-col items-center lg:items-start space-y-2 sm:space-y-2.5 md:space-y-3 list-none p-0"
           >
             {trustSignals.map((signal, i) => (
               <li key={i} className="flex items-center gap-3 text-[11px] sm:text-sm text-gray-400 text-left w-full max-w-md lg:max-w-none">
@@ -227,6 +266,7 @@ export default function Hero() {
               </li>
             ))}
           </ul>
+          </div>
         </div>
 
         {/* RIGHT COLUMN: ORBIT VISUAL — labelled as decorative illustration */}
@@ -309,7 +349,7 @@ export default function Hero() {
 
     {/* heading */}
     <h2 className="mt-2 text-[0.82rem] font-bold leading-[1.2] tracking-tight sm:mt-2.5 sm:text-base lg:text-[1.05rem]">
-      Practical coaching to <br /> lead,communicate and perform.
+      Are you a leader or just a designation?
     </h2>
 
     {/* subtext */}

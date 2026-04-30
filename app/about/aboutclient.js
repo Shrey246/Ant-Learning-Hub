@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Target, Users, ShieldCheck, ArrowRight, Zap, GraduationCap, Briefcase, Award } from "lucide-react";
+import { Sparkles, Users, ShieldCheck, Speech, ArrowRight, Zap, GraduationCap, Briefcase, Award, Gavel } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -188,7 +188,7 @@ export default function AboutPage() {
               "Started leadership training journey",
               "Worked with Fortune 500 professionals",
               "Architected behavioral coaching frameworks",
-              "Empowered 1000+ individuals worldwide",
+              "Empowered 10,000+ individuals worldwide",
               "Focused on holistic transformation",
             ].map((item, i) => (
               <motion.div
@@ -223,12 +223,12 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Leadership Development", icon: <Target size={18}/> },
+              { title: "Leadership Development", icon: < Speech size={18}/> },
               { title: "Emotional Intelligence", icon: <Zap size={18}/> },
               { title: "Organizational Design", icon: <Briefcase size={18}/> },
               { title: "Confidence Building", icon: <ShieldCheck size={18}/> },
               { title: "Strategic Career Direction", icon: <GraduationCap size={18}/> },
-              { title: "Decision Making", icon: <Zap size={18}/> },
+              { title: "Decision Making", icon: <Gavel size={18}/> },
             ].map((item, i) => (
               <motion.div
                 key={i}

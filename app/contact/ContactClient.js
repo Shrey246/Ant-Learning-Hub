@@ -280,7 +280,7 @@ const handleSubmit = async (e) => {
 </section>
 
         {/* FORM SECTION */}
-        <section className="relative z-10 mx-auto max-w-4xl px-4 pb-6">
+        <section id="booking" className="relative z-10 mx-auto max-w-4xl px-4 pb-6">
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}

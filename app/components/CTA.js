@@ -44,7 +44,7 @@ export default function CTA() {
 
           <div className="mt-5 md:mt-6">
             <Link
-              href="/Contact"
+              href="/contact#booking"
               className="group relative inline-flex items-center gap-2 rounded-full bg-white text-black px-8 py-3.5 md:px-10 md:py-5 text-sm md:text-base font-bold transition-transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)] w-full sm:w-auto justify-center"
             >
               Book a Conversation

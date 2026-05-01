@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Menu, X, ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { db } from "../lib/firebase";
@@ -38,6 +38,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const isHomePage = pathname === "/";
   const [showBooking, setShowBooking] = useState(false);
   const [dateLimits, setDateLimits] = useState({ min: "", max: "" });
@@ -132,6 +134,15 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [showBooking]);
+
+  useEffect(() => {
+    if (searchParams.get("book") === "true") {
+      setShowBooking(true);
+
+      // Clean URL after opening modal
+      router.replace(window.location.pathname);
+    }
+  }, [searchParams]);
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();

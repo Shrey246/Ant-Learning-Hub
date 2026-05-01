@@ -6,11 +6,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Users, ShieldCheck, Speech, ArrowRight, Zap, GraduationCap, Briefcase, Award, Gavel } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
+
+
 
 export default function AboutPage() {
   return (
     <>
+    <Suspense fallback={null}>
       <Navbar />
+    </Suspense>
 
       <main className="relative bg-[#030812] text-white overflow-hidden pt-24 md:pt-32">
         

@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { db } from "../lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { Suspense } from "react";
 
 export default function Contact() {
 const [showToast, setShowToast] = useState(false);
@@ -54,7 +55,9 @@ const handleSubmit = async (e) => {
 
   return (
     <>
+    <Suspense fallback={null}>
       <Navbar />
+    </Suspense>
 
       <main className="relative bg-[#030812] text-white overflow-hidden pt-32 md:pt-22">
         

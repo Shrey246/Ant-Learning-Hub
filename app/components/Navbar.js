@@ -205,7 +205,7 @@ export default function Navbar() {
               `}
             >
               <Image
-                src="/logo6.png"
+                src="/logo7.png"
                 alt="ANT Learning Hub Logo"
                 width={200}
                 height={70}
@@ -237,7 +237,7 @@ export default function Navbar() {
               <div className="absolute inset-0 rounded-lg bg-teal-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <Image
-                src="/logo6.png"
+                src="/logo7.png"
                 alt="ANT Learning Hub Logo"
                 width={140}
                 height={44}

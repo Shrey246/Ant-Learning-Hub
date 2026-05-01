@@ -24,6 +24,27 @@ import {
 import { db } from "../lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+const Snorkel = ({ size = 24, className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}   // keep consistent with lucide
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M13.5 14a2 2 0 0 1-1.4-.6l-.7-.8c-.8-.8-2-.8-2.8 0l-.7.8a2 2 0 0 1-1.4.6H6a4 4 0 0 1 0-8h8a4 4 0 0 1 0 8ZM12 18a2 2 0 0 1-4 0" />
+    <path d="M10 20a2 2 0 0 0 2 2h4c3.3 0 6-2.7 6-6V2h-4v14a2 2 0 0 1-2 2m2-8h4" />
+    <circle cx="4.5" cy="21.5" r="0.5" />
+    <path d="M3 17.5h.01" />
+  </svg>
+);
+
 const programGroups = [
   {
     title: "For Individuals",
@@ -300,7 +321,7 @@ export default function Programs() {
                           <CheckCircle2 size={18} aria-hidden="true" className={`${program.iconText} shrink-0 mt-0.5 opacity-80`} />
                           <span className={outcome.includes("SCUBA") ? `font-bold ${program.iconText} flex items-center gap-2` : ""}>
                             {outcome}
-                            {outcome.includes("SCUBA") && <Waves size={16} aria-hidden="true" className="animate-pulse" />}
+                            {outcome.includes("SCUBA") && <Snorkel size={30} aria-hidden="true" className="animate-pulse" />}
                           </span>
                         </li>
                       ))}

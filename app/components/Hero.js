@@ -7,6 +7,7 @@ import {
   Anchor,
   ArrowRight,
   AudioLines,
+  BicepsFlexed,
   CheckCircle2,
   Crown,
   Feather,
@@ -26,32 +27,81 @@ const trustSignals = [
   "Coaching for Leaders, individuals and Institutions",
 ];
 
+const Snorkel = ({ size = 24, className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}   // keep consistent with lucide
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M13.5 14a2 2 0 0 1-1.4-.6l-.7-.8c-.8-.8-2-.8-2.8 0l-.7.8a2 2 0 0 1-1.4.6H6a4 4 0 0 1 0-8h8a4 4 0 0 1 0 8ZM12 18a2 2 0 0 1-4 0" />
+    <path d="M10 20a2 2 0 0 0 2 2h4c3.3 0 6-2.7 6-6V2h-4v14a2 2 0 0 1-2 2m2-8h4" />
+    <circle cx="4.5" cy="21.5" r="0.5" />
+    <path d="M3 17.5h.01" />
+  </svg>
+);
+
 
 const orbitCardsDesktop = [
   {
     title: "1:1 Coaching",
-    text: "Feeling stuck or unclear? Gain direction,confidence and act.",
+    text: (
+      <>
+        <span className="text-teal-200">Feeling stuck or unclear?</span>
+        <br />
+        Gain direction, confidence and act.
+      </>
+    ),
     icon: Handshake,
     orbitX: "calc(-1.34 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Student Development",
-    text: "Struggling with direction or confidence? Gain clarity, discipline and self-belief.",
+    text: (
+      <>
+        <span className="text-teal-200">
+          Struggling with direction or confidence?
+        </span>
+        <br />
+        Gain clarity, discipline and self-belief.
+      </>
+    ),
     icon: Users,
     orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "calc(-1 * var(--orbit-offset))",
   },
   {
     title: "Teacher Training",
-    text: "Unable to connect with students or parents? Learn to connect, manage, and inspire better.",
+    text: (
+      <>
+        <span className="text-teal-200">
+          Unable to connect with students or parents?
+        </span>
+        <br />
+        Learn to connect, manage, and inspire better.
+      </>
+    ),
     icon: Podcast,
     orbitX: "calc(-1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
   },
   {
     title: "Corporate Team Training",
-    text: "Struggling teams? Create trust, ownership, and drive.",
+    text: (
+      <>
+        <span className="text-teal-200">Struggling teams?</span>
+        <br />
+        Build trust, create ownership & develop a highly motivated team.
+      </>
+    ),
     icon: ShieldCheck,
     orbitX: "calc(1.35 * var(--orbit-offset))",
     orbitY: "var(--orbit-offset)",
@@ -61,30 +111,58 @@ const orbitCardsDesktop = [
 const orbitCardsMobile = [
   {
     title: "1:1 Coaching",
-    text: "Feeling stuck or unclear? Gain direction, confidence and act.",
+    text: (
+      <>
+        <span className="text-teal-200">Feeling stuck or unclear?</span>
+        <br />
+        Gain direction, confidence and act.
+      </>
+    ),
     icon: Handshake,
-    orbitX: "calc(-2.22 * var(--orbit-offset))", // ⬅️ pushed more left
+    orbitX: "calc(-2.22 * var(--orbit-offset))",
     orbitY: "calc(-1.5 * var(--orbit-offset))",
   },
   {
     title: "Student Development",
-    text: "Struggling with direction or confidence? Gain clarity, discipline and self-belief.",
+    text: (
+      <>
+        <span className="text-teal-200">
+          Struggling with direction or confidence?
+        </span>
+        <br />
+        Gain clarity, discipline and self-belief.
+      </>
+    ),
     icon: Users,
-    orbitX: "calc(2.0 * var(--orbit-offset))", // ➡️ pushed more right
+    orbitX: "calc(2.0 * var(--orbit-offset))",
     orbitY: "calc(-2 * var(--orbit-offset))",
   },
   {
     title: "Teacher Training",
-    text: "Unable to connect with students or parents? Learn to connect, manage, and inspire better.",
+    text: (
+      <>
+        <span className="text-teal-200">
+          Unable to connect with students or parents?
+        </span>
+        <br />
+        Learn to connect, manage, and inspire better.
+      </>
+    ),
     icon: Podcast,
-    orbitX: "calc(-2.1 * var(--orbit-offset))", // ⬅️ more left
+    orbitX: "calc(-2.1 * var(--orbit-offset))",
     orbitY: "calc(2.0 * var(--orbit-offset))",
   },
   {
     title: "Corporate Training",
-    text: "Struggling teams? Create trust, ownership, and drive.",
+    text: (
+      <>
+        <span className="text-teal-200">Struggling teams?</span>
+        <br />
+        Build trust, create ownership & develop a highly motivated team.
+      </>
+    ),
     icon: ShieldCheck,
-    orbitX: "calc(2.2 * var(--orbit-offset))", // ➡️ more right
+    orbitX: "calc(2.2 * var(--orbit-offset))",
     orbitY: "calc(1 * var(--orbit-offset))",
   },
 ];
@@ -93,9 +171,9 @@ const orbitCardsMobile = [
 
 const corePillars = [
   { label: "Lack of clarity → Clear direction", icon: Crown },
-  { label: "Poor communication → Strong influence", icon: AudioLines },
+  { label: "⁠Attrition → Creating Leaders", icon: BicepsFlexed },
   { label: "Pressure → Composed leadership", icon: Gauge },
-  { label: "⁠Fear of Unknown -> Leadership through SCUBA", icon: Feather }
+  { label: "⁠Fear of Unknown -> Leadership through SCUBA", icon: Snorkel }
 ];
 
 // Edit these numbers to move only the Aspire / Nurture / Transform strip.
@@ -282,7 +360,7 @@ export default function Hero() {
       aria-hidden="true"
       className="absolute inset-0 rounded-full border border-white/[0.05]"
       animate={{ rotate: 360 }}
-      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
     />
 
     {activeOrbitCards.map((card, index) => {
@@ -299,9 +377,9 @@ export default function Hero() {
         >
           <motion.article
             aria-label={`${card.title}: ${card.text}`}
-            className="w-[5.5rem] rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[7.5rem] lg:w-[8.5rem]"
-            animate={{ y: [0, index % 2 === 0 ? -4 : 4, 0], x: [0, index % 2 === 0 ? 2 : -2, 0] }}
-            transition={{ duration: 12 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+            className="w-[5.5rem] will-change-transform rounded-2xl border border-white/10 bg-[#030812]/95 shadow-2xl backdrop-blur-xl sm:w-[7.5rem] lg:w-[8.5rem]"
+            animate={{ y: [0, index % 2 === 0 ? -6 : 6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
           >
             <div className="p-1.5 sm:p-3">
               <div className="flex flex-col gap-1 sm:gap-2">
@@ -333,8 +411,8 @@ export default function Hero() {
 <div className="absolute inset-0 flex items-center justify-center">
   <motion.div
     className="relative z-20 flex w-[min(11.25rem,44vw)] flex-col overflow-hidden rounded-[1.25rem] border border-white/15 bg-gradient-to-br from-white/[0.07] to-transparent p-2.5 shadow-3xl backdrop-blur-3xl sm:w-[min(13.75rem,40vw)] sm:p-4 lg:w-[min(15.5rem,34vw)]"
-    animate={{ y: [0, -8, 0] }}
-    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    animate={{ y: [0, -10, 0] }}
+    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
   >
     {/* top glow line */}
     <div

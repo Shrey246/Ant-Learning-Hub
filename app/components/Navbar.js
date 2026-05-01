@@ -222,7 +222,7 @@ export default function Navbar() {
         }`}
       >
       <div
-        className={`mx-auto max-w-7xl grid grid-cols-3 items-center rounded-2xl px-4 py-2.5 sm:px-6 
+        className={`mx-auto max-w-7xl flex items-center justify-between lg:grid lg:grid-cols-3 rounded-2xl px-4 py-2.5 sm:px-6 
         border transition-all duration-500 ease-in-out
         ${
           scrolled && !showBooking
@@ -279,8 +279,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex justify-end">
-          {/* CTA BUTTON */}
+        <div className="flex items-center justify-end w-full lg:w-auto">
           <div className="hidden lg:block">
             <button
               onClick={() => setShowBooking(true)}
@@ -290,15 +289,14 @@ export default function Navbar() {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>
-        </div>
 
-        {/* MOBILE TOGGLE */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden rounded-xl border border-white/10 bg-white/5 p-2 text-gray-400 hover:text-white transition-colors"
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden flex items-center justify-center w-10 h-10 aspect-square rounded-xl bg-white/5 border border-white/10 ml-auto"
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* MOBILE MENU */}

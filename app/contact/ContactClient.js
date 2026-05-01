@@ -96,7 +96,7 @@ const handleSubmit = async (e) => {
         <section className="relative z-10 mx-auto max-w-5xl px-4 ">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { title: "Email", value: "coachpraveenjp@gmail.com", icon: <Mail size={18} /> },
+              { title: "Email", value: "praveen@antlearninghub.com", icon: <Mail size={18} /> },
               { title: "Phone", value: "+91 9110661178", icon: <Phone size={18} /> },
               { title: "Location", value: "Bengaluru, India", icon: <MapPin size={18} /> },
             ].map((item, i) => (

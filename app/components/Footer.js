@@ -69,7 +69,7 @@ export default function Footer() {
 
             <div className="space-y-2 text-gray-400">
               <p className="hover:text-white transition-colors duration-300 cursor-default">
-                coachpraveenjp@gmail.com
+                praveen@antlearninghub.com
               </p>
               <p className="hover:text-white transition-colors duration-300 cursor-default">
                 +91 9110661178

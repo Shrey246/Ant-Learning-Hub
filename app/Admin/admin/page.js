@@ -325,7 +325,7 @@ export default function AdminDashboard() {
               </h1>
               <div className="mt-3 flex items-center justify-center md:justify-start gap-2 text-gray-300 font-medium text-sm">
                 <Mail size={14} className="text-teal-500" />
-                <span>coachpraveenjp@gmail.com</span>
+                <span>praveen@antlearninghub.com</span>
               </div>
             </div>
           </div>

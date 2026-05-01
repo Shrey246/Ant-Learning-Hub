@@ -235,13 +235,13 @@ export default function Programs() {
             <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] md:text-xs uppercase tracking-[0.4em] text-teal-400 backdrop-blur-md">
               <Sparkles size={14} aria-hidden="true" /> If You Want Different Results You Need To Do Things Differently!
             </p>
-            <h1
+            <h2
               id="programs-heading"
               className="mt-4 text-5xl md:text-8xl font-bold tracking-tight bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent leading-[0.95]"
               style={{ paddingBottom: '12px' }}
             >
-              Coaching <br className="lg:hidden" /> Programs
-            </h1>
+            Training And Coaching <br className="lg:hidden" /> Programs
+            </h2>
             <p className="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
               Architected for high-performance leadership. Move from abstract intention 
               to concrete action through structured behavioural mastery.

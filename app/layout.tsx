@@ -16,7 +16,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  // Optional: Add icons or theme colors for mobile status bars
+};
+
+export const viewport = {
   themeColor: "#030812",
 };
 
@@ -26,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body
         className={`${inter.className} bg-[#030812] text-white antialiased selection:bg-teal-500/30 selection:text-teal-200`}
       >

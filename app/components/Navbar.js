@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { db } from "../lib/firebase";
@@ -38,7 +38,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const isHomePage = pathname === "/";
   const [showBooking, setShowBooking] = useState(false);
@@ -136,13 +135,23 @@ export default function Navbar() {
   }, [showBooking]);
 
   useEffect(() => {
-    if (searchParams.get("book") === "true") {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("book") === "true") {
       setShowBooking(true);
 
-      // Clean URL after opening modal
-      router.replace(window.location.pathname);
+      // remove query param after opening modal
+      params.delete("book");
+
+      const newUrl =
+        window.location.pathname +
+        (params.toString() ? `?${params.toString()}` : "");
+
+      router.replace(newUrl);
     }
-  }, [searchParams]);
+  }, []);
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();

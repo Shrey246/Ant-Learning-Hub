@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import PremiumCountdown from "./premiumcountdown";
 import RevealAnimation from "./revealanimation";
 
-const REVEAL_DATE = "2026-04-30T20:18:00";
+const REVEAL_DATE = "2026-05-02T15:55:00";
 
 export default function RevealGate({ children }) {
   const [phase, setPhase] = useState("countdown");

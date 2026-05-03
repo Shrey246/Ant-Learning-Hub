@@ -1,9 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+  const email = "praveen@antlearninghub.com";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
+
   return (
     <footer className="relative overflow-hidden bg-[#030812] text-white">
 
@@ -68,8 +82,17 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-2 text-gray-400">
-              <p className="hover:text-white transition-colors duration-300 cursor-default">
-                praveen@antlearninghub.com
+              <p
+                onClick={handleCopy}
+                className="hover:text-white transition-colors duration-300 cursor-pointer relative"
+              >
+                {email}
+
+                {copied && (
+                  <span className="absolute -top-5 left-0 text-xs text-teal-400">
+                    Copied!
+                  </span>
+                )}
               </p>
               <p className="hover:text-white transition-colors duration-300 cursor-default">
                 +91 9110661178

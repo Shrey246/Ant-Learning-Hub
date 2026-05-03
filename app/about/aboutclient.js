@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-4">
             {[
               { value: "24+", label: "Years Experience", icon: <Briefcase size={20}/> },
-              { value: "1000+", label: "People Guided", icon: <Users size={20}/> },
+              { value: "10,000+", label: "People Guided", icon: <Users size={20}/> },
               { value: "360°", label: "Holistic Coaching", icon: <Zap size={20}/> },
             ].map((item, i) => (
               <motion.div

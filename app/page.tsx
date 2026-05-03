@@ -6,8 +6,6 @@ import Audience from "./components/Audience";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
-import RevealGate from "./components/revealcomp/RevealGate";
-
 import HeroWrapper from "./components/HeroWrapper";
 
 /* ================= SEO METADATA ================= */
@@ -55,10 +53,9 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Navbar />
-
-      <RevealGate>
+      
         <main className="bg-[#030812]">
+          <Navbar />
           <HeroWrapper />
           <AboutPreview />
           <Philosophy />
@@ -68,7 +65,6 @@ export default function Home() {
         </main>
 
         <Footer />
-      </RevealGate>
     </>
   );
 }

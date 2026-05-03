@@ -268,7 +268,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-4">
               <Link
-                href="?book=true"
+                href="/?book=true"
                 className="group relative inline-flex items-center gap-2 rounded-full bg-white text-black px-10 py-4 font-bold transition-all hover:scale-105 active:scale-95 shadow-xl"
               >
                 Book a Session
